@@ -1,0 +1,114 @@
+[
+  {
+    "id": "1",
+    "sku": "asdf190",
+    "name": "Adidas Rivalry Low",
+    "price": 399.0,
+    "discount": 0,
+    "new": true,
+    "rating": 4,
+    "saleCount": 29,
+    "category": ["Adidas"],
+    "silueta": [""],
+    "tag": ["Adidas", "Sneakers"],
+    "stock": 400,
+    "image": [
+      "/api/Image/adidas_3.jpg",
+      "/api/Image/adidas_0.jpg",
+      "/api/Image/adidas_1.jpg",
+      "/api/Image/adidas_2.jpg"
+    ],
+    "variation": [
+      {
+        "color": "blue",
+        "image": "/api/Images/adidas_2.jpg",
+        "size": [
+          {
+            "name": "7",
+            "stock": 50
+          },
+          {
+            "name": "7 1/2",
+            "stock": 50
+          },
+          {
+            "name": "8",
+            "stock": 50
+          },
+          {
+            "name": "8 1/2",
+            "stock": 50
+          },
+          {
+            "name": "9",
+            "stock": 50
+          },
+          {
+            "name": "9 1/2",
+            "stock": 50
+          },
+          {
+            "name": "10",
+            "stock": 50
+          },
+          {
+            "name": "11",
+            "stock": 50
+          },
+          {
+            "name": "12",
+            "stock": 50
+          }
+        ]
+      }
+    ],
+    "shortDescription": "Tenis Rivalry LowTenis icónicos reimaginados para la vida moderna con un estilo muy cool",
+    "fullDescription": "Estos tenis adidas de corte bajo reviven el legado del básquet de los 80 para las calles de hoy. Reimaginan una silueta clásica del básquet con detalles premium. La parte superior de nobuk de piel de cerdo y detalles de cuero elevan el estilo retro, mientras que una suela tipo cupsole de caucho y mediasuela de EVA brindan amortiguación y tracción. Estos tenis traen el ADN de leyendas del deporte y la actitud de rebeldes y renegados. Su prestigio y nostalgia suplican por un regreso triunfal."
+  },
+  {
+    "id": "2",
+    "sku": "asdf191",
+    "name": "Playera Graphics Circular Puma",
+    "price": 220.0,
+    "discount": 0,
+    "new": false,
+    "rating": 5,
+    "saleCount": 19,
+    "category": ["Puma"],
+    "silueta": [""],
+    "tag": ["Puma", "Playera", "Rojo"],
+    "stock": 1250,
+
+    "image": [
+      "/api/Image/puma_1.jpg",
+      "/api/Image/puma_2.jpg",
+      "/api/Image/puma_3.jpg"
+    ],
+    "variation": [
+      {
+        "color": "red",
+        "image": "/assets/img/product/accessories/nfl/60352010_39THIRTY_NFL23DRAFT3930_DALCOW_OTC_3QR.webp",
+        "size": [
+          {
+            "name": "M",
+            "stock": 250
+          },
+          {
+            "name": "L",
+            "stock": 250
+          },
+          {
+            "name": "X",
+            "stock": 250
+          },
+          {
+            "name": "XL",
+            "stock": 250
+          }
+        ]
+      }
+    ],
+    "shortDescription": "Celebra a PUMA y muestra tu lado divertido con esta remera GRAPHICS, que luce una genial estampa PUMA circular en el pecho. Muestra que eres fan de la marca",
+    "fullDescription": ""
+  }
+]
