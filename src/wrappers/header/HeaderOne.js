@@ -72,7 +72,7 @@ const HeaderOne = ({
                 }}
               >
                 {/* header logo */}
-                <Logo imageUrl="/assets/img/logo/logo-color-120x120.jpg" />
+                <Logo imageUrl="/logo-b-colors.png" />
               </div>
             </div>
             <div className="col-xl-9 col-lg-9 d-none d-lg-block">

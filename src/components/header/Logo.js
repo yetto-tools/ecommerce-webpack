@@ -6,7 +6,7 @@ const Logo = ({ imageUrl, logoClass }) => {
   return (
     <div className={clsx(logoClass)}>
       <Link to={process.env.PUBLIC_URL + "/"}>
-        <img alt="" src={process.env.PUBLIC_URL + imageUrl} width={52} />
+        <img alt="" src={process.env.PUBLIC_URL + imageUrl} width={128} />
       </Link>
     </div>
   );
@@ -14,7 +14,7 @@ const Logo = ({ imageUrl, logoClass }) => {
 
 Logo.propTypes = {
   imageUrl: PropTypes.string,
-  logoClass: PropTypes.string
+  logoClass: PropTypes.string,
 };
 
 export default Logo;
