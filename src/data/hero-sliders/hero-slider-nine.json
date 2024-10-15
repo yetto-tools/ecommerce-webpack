@@ -3,21 +3,8 @@
     "id": 1,
     "title": "",
     "subtitle": "",
-    "image": "/assets/img/slider/ne-slide-1.jpg",
-    "url": "/shop-grid-standard"
-  },
-  {
-    "id": 2,
-    "title": "",
-    "subtitle": "",
-    "image": "/assets/img/slider/ne-slide-2.jpg",
-    "url": "/shop-grid-standard"
-  },
-  {
-    "id": 2,
-    "title": "",
-    "subtitle": "",
-    "image": "/assets/img/slider/ne-slide-3.jpg",
+    "button": "",
+    "image": "/assets/img/banner/banner1.jpg",
     "url": "/shop-grid-standard"
   }
 ]

@@ -2,63 +2,82 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
 
-import data from '../../data/ligas.json'
+import data from "../../data/menus.json";
 
 const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
-  
-  const splitTeamsIntoColumns = (teams) => {
-    const columnSize = Math.ceil(teams.length / 3);
-    return [
-      teams.slice(0, columnSize),
-      teams.slice(columnSize, columnSize * 2),
-      teams.slice(columnSize * 2),
-    ];
-  };
-
   return (
     <div
-      className={clsx(sidebarMenu
+      className={clsx(
+        sidebarMenu
           ? "sidebar-menu"
-          : `main-menu ${menuWhiteClass ? menuWhiteClass : ""}`)}
+          : `main-menu ${menuWhiteClass ? menuWhiteClass : ""}`
+      )}
     >
       <nav>
-      <ul>
-          {Object.keys(data).map((key) => {
-            const columns = splitTeamsIntoColumns(data[key].teams || []);
-            return (
-              <li key={key} className="mx-4">
-                <Link to={process.env.PUBLIC_URL + "/"}>
-                  { data[key].src &&  
-                    <img src={data[key].src} alt={key} width={36} className="me-2" />
-                  }
-                  {data[key].name}
-                  {sidebarMenu ? <i className="fa fa-angle-right"></i> : <i className="fa fa-angle-down" />}
-                </Link>
-                
-                <ul className="mega-menu mega-menu-padding">
-                  {columns.map((column, index) => (
-                    <li key={index}>
-                      <ul>
-                        <li className="font-weight-bold">
-                          
-                        </li>
-                        {column.map((team) => (
-                          <li key={team.name} >
-                            {/* <Link to={process.env.PUBLIC_URL + "/home-fashion-two"}> */}
-                            <Link to={process.env.PUBLIC_URL + team.link}>
-                              {team.src && <img className="pe-2" src={team.src} alt={team.name} width={32} />}
-                              {team.name}
+        <ul>
+          {typeof data === "object" &&
+            data.menus.map((menu, idx) => {
+              return (
+                <li key={idx} className="mx-4 uppercase">
+                  <Link to={process.env.PUBLIC_URL + "/"}>
+                    {menu.src && (
+                      <img
+                        src={menu.src}
+                        alt={menu.name}
+                        width={36}
+                        className="me-2"
+                      />
+                    )}
+                    <span className="fw-600">{menu.name}</span>
+
+                    {menu.options.length !== 0 ? (
+                      sidebarMenu ? (
+                        <i className="fa fa-angle-right"></i>
+                      ) : (
+                        <i className="fa fa-angle-down" />
+                      )
+                    ) : (
+                      ""
+                    )}
+                  </Link>
+
+                  {menu.options.length === 0 ? (
+                    ""
+                  ) : (
+                    <ul className="submenu">
+                      {menu.options.map((item, idx) =>
+                        idx === 0 ? (
+                          <li className="border-b-2 mb-3">
+                            <span className="">
+                              <Link to={process.env.PUBLIC_URL + item?.link}>
+                                <span className="fw-600 uppercase fs-6">
+                                  {item.name}
+                                </span>
+                              </Link>
+                            </span>
+                          </li>
+                        ) : (
+                          <li key={idx} className="hype-street-menu ">
+                            <Link to={process.env.PUBLIC_URL + item?.link}>
+                              {item.src && (
+                                <img
+                                  className="pe-2"
+                                  src={item.src}
+                                  alt={item.name}
+                                  width={32}
+                                />
+                              )}
+                              <span className="uppercase">{item.name}</span>
                             </Link>
                           </li>
-                        ))}
-                      </ul>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            );
-          })}
-        </ul>        
+                        )
+                      )}
+                    </ul>
+                  )}
+                </li>
+              );
+            })}
+        </ul>
       </nav>
     </div>
   );
@@ -70,4 +89,3 @@ NavMenu.propTypes = {
 };
 
 export default NavMenu;
-

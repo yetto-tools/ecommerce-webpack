@@ -6,6 +6,9 @@ import BlogFeatured from "../../wrappers/blog-featured/BlogFeatured";
 import HeroSliderNine from "../../wrappers/hero-slider/HeroSliderNine";
 import TabProductFive from "../../wrappers/product/TabProductFive";
 import BrandLogoSliderFour from "../../wrappers/brand-logo/BrandLogoSliderFour";
+import BrandGrid from "../../wrappers/banner/BrandGrid";
+import CategoryTwoSlider from "../../wrappers/category/CategoryTwoSlider";
+import BannerSingleImage from "../../components/banner/BannerSingleImage";
 
 const HomeFashionTwo = () => {
   return (
@@ -20,19 +23,24 @@ const HomeFashionTwo = () => {
         headerTop="visible"
       >
         {/* hero slider */}
-        <HeroSliderNine spaceLeftClass="ml-70" spaceRightClass="mr-70" />
+        <HeroSliderNine spaceLeftClass="" spaceRightClass="" />
 
-        {/* slide de ligas  */}
+        {/* slide de marcas  */}
+
+        <BrandGrid />
+        {/* slider new arrivals */}
+
         <BrandLogoSliderFour spaceBottomClass="pb-50" spaceTopClass="pt-50" />
 
-        {/* banner */}
-        <BannerOne spaceTopClass="pt-60" spaceBottomClass="pb-65" />
+        <CategoryTwoSlider spaceTopClass="pt-100" spaceBottomClass="pb-95" />
 
+        <BannerSingleImage />
+        <div className="pt-40 pb-20 mt-40 mb-40"></div>
         {/* tab product */}
-        <TabProductFive spaceBottomClass="pb-60" category="GORRAS" />
-
+        {/* <TabProductFive spaceBottomClass="pb-60" category="GORRAS" /> */}
+        <div className="pt-40 pb-20 bg-white"></div>
         {/* blog featured */}
-        <BlogFeatured spaceBottomClass="pb-55" />
+        {/* <BlogFeatured spaceBottomClass="pb-55" /> */}
       </LayoutOne>
     </Fragment>
   );

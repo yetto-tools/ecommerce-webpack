@@ -70,7 +70,7 @@
   "compare": "Compare",
   "my_account": "Mi cuenta",
   "login_register": "Login / Registro",
-  "about_us": "Sobre Hype Street",
+  "about_us": "¿quiénes somos?",
   "useful_links": "Enlaces Rápidos",
   "follow_us": "Síguenos en",
   "contact_us": "Contáctanos",
@@ -82,7 +82,7 @@
   "blog_details_standard": "Blog Details Standard",
   "blog_details_video": "Blog Details Video",
   "blog_details_slider": "Blog Details Slider",
-
+  "whatsapp": "WHATSAPP",
   "header_top": {
     "call_phone": "Llámanos!! +(502) 0000-0000",
     "text_delivery": "Envío gratuito para pedidos Mayores a "
@@ -109,16 +109,23 @@
   },
 
   "footer": {
-    "store_location": "Tiendas Hype Street",
+    "store_locations": "UBICACIONES DE TIENDAS",
     "suscribe": "Suscripción",
     "new_letter": "Reciba por correo electrónico información actualizada sobre nuestra tienda y ofertas especiales.",
-    "returns": "Devoluciones",
-    "contact": "Contacto",
+    "returns": "DEVOLUCIONES",
+    "contact": "CONTACTO",
     "about_us": "¡Hypeate! ⚡️ las mejores marcas.",
-    "terms_conditions": "Términos y Condiciones",
-    "size_guide": "Siluetas Hype Street",
+    "size_guide": "GUÍA DE TALLAS",
+    "faq": "PREGUNTAS FRECUENTES",
     "payment_method": "Método de Pago",
-    "text_placeholder": "Ingresa tu correo electrónico..."
+    "text_placeholder": "Ingresa tu correo electrónico...",
+    "shipping_info": "INFORMACIÓN DE ENVÍO",
+    "terms_conditions": "TÉRMINOS Y CONDICIONES",
+    "help": "AYUDA",
+    "contact_us": "CONTÁCTANOS",
+    "contact_here": "CONTÁCTANOS AQUÍ",
+    "warranty": "TÉRMINOS Y GARANTÍAS",
+    "company_name": "Hype Street Guatemala"
   },
 
   "footer_copyright": {

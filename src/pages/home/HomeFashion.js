@@ -10,8 +10,8 @@ const HomeFashion = () => {
   return (
     <Fragment>
       <SEO
-        titleTemplate="New Era Cap Guatemala"
-        description="New Erar Guatemala."
+        titleTemplate="Hype Street Guatemala"
+        description="Hype Street Guatemala."
       />
       <LayoutOne
         headerContainerClass="container-fluid"
