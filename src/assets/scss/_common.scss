@@ -1830,6 +1830,7 @@ textarea:focus {
 
       content: "";
       transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+      border-radius: 32px;
     }
     &::after {
       right: 0;

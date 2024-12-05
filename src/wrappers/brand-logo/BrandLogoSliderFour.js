@@ -6,6 +6,7 @@ import brandLogoData from "../../data/brand-logos/brand-logo-one.json";
 
 const settings = {
   loop: true,
+  spaceBetween: 30,
   autoplay: {
     delay: 5000,
     disableOnInteraction: false,

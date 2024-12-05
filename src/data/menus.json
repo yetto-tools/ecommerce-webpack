@@ -170,7 +170,7 @@
     {
       "name": "accesorios",
       "description": "",
-      "options": [{ "name": "", "description": "", "link": "#", "src": "" }],
+      "options": [],
       "link": "#",
       "src": ""
     }
