@@ -1,13 +1,12 @@
 import React, { Fragment } from "react";
 import SEO from "../../components/seo";
-
+import LayoutNine from "../../layouts/LayoutNine";
 import HeroSliderThirtyThree from "../../wrappers/hero-slider/HeroSliderThirtyThree";
 import BannerThirtyTwo from "../../wrappers/banner/BannerThirtyTwo";
 import TabProductEleven from "../../wrappers/product/TabProductEleven";
 import CountDownSix from "../../wrappers/countdown/CountDownSix";
 import TestimonialThree from "../../wrappers/testimonial/TestimonialThree";
 import NewsletterThree from "../../wrappers/newsletter/NewsletterThree";
-import LayoutOne from "../../layouts/LayoutOne";
 
 const HomeChristmas = () => {
   return (
@@ -16,7 +15,7 @@ const HomeChristmas = () => {
         titleTemplate="Christmas Home"
         description="Christmas home of flone react minimalist eCommerce template."
       />
-      <LayoutOne
+      <LayoutNine
         headerContainerClass="container-fluid"
         headerBorderStyle="fluid-border"
         headerPaddingClass="header-padding-2"
@@ -61,7 +60,7 @@ const HomeChristmas = () => {
           spaceBottomClass="pb-95"
           subscribeBtnClass="dark-red-subscribe"
         />
-      </LayoutOne>
+      </LayoutNine>
     </Fragment>
   );
 };

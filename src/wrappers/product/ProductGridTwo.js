@@ -23,7 +23,6 @@ const ProductGridTwo = ({
   return (
     <Fragment>
       {prods?.map((product) => {
-        
         return (
           <div className="col-xl-3 col-md-6 col-lg-4 col-sm-6" key={product.id}>
             <ProductGridSingleTwo

@@ -6,6 +6,7 @@ import NavMenu from "../../components/header/NavMenu";
 import MobileMenu from "../../components/header/MobileMenu";
 import LanguageCurrencyChanger from "../../components/header/sub-components/LanguageCurrencyChanger";
 
+
 const HeaderThree = () => {
   const [scroll, setScroll] = useState(0);
   const [headerTop, setHeaderTop] = useState(0);
@@ -46,10 +47,7 @@ const HeaderThree = () => {
             <div className="col-xl-12 col-lg-12 col-6">
               <div className="center-menu-logo text-start text-lg-center">
                 {/* header logo */}
-                <Logo
-                  imageUrl="/assets/img/logo/logo-color-120x120.jpg"
-                  logoClass="logo"
-                />
+                <Logo imageUrl="/assets/img/logo/logo.png" logoClass="logo" />
               </div>
             </div>
             <div className="col-6 d-block d-lg-none">
@@ -68,5 +66,7 @@ const HeaderThree = () => {
     </header>
   );
 };
+
+
 
 export default HeaderThree;

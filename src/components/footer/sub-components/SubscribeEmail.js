@@ -1,11 +1,7 @@
 import PropTypes from "prop-types";
-import { useTranslation } from "react-i18next";
 import MailchimpSubscribe from "react-mailchimp-subscribe";
 
 const CustomForm = ({ status, message, onValidated }) => {
-
-  const {t} = useTranslation();
-
   let email;
   const submit = () => {
     email &&
@@ -27,7 +23,7 @@ const CustomForm = ({ status, message, onValidated }) => {
             className="email"
             ref={node => (email = node)}
             type="email"
-            placeholder={t("footer.text_placeholder")}
+            placeholder="Enter your email address..."
           />
         </div>
         <div className="clear">

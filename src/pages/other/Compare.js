@@ -8,7 +8,6 @@ import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import Rating from "../../components/product/sub-components/ProductRating";
 import { addToCart } from "../../store/slices/cart-slice";
 import { deleteFromCompare } from "../../store/slices/compare-slice";
-import { useTranslation } from "react-i18next";
 
 const Compare = () => {
   const dispatch = useDispatch();
@@ -17,7 +16,6 @@ const Compare = () => {
   const currency = useSelector((state) => state.currency);
   const { compareItems } = useSelector((state) => state.compare);
   const { cartItems } = useSelector((state) => state.cart);
-  const {i18n} = useTranslation();
 
   return (
     <Fragment>
@@ -95,7 +93,7 @@ const Compare = () => {
                                         target="_blank"
                                       >
                                         {" "}
-                                        Comprar Ahora{" "}
+                                        Buy now{" "}
                                       </a>
                                     ) : compareItem.variation &&
                                       compareItem.variation.length >= 1 ? (
@@ -151,23 +149,26 @@ const Compare = () => {
                               const finalProductPrice = (
                                 compareItem.price * currency.currencyRate
                               ).toFixed(2);
-                              // const finalDiscountedPrice = (
-                              //   discountedPrice * currency.currencyRate
-                              // ).toFixed(2);
+                              const finalDiscountedPrice = (
+                                discountedPrice * currency.currencyRate
+                              ).toFixed(2);
                               return (
                                 <td className="product-price" key={key}>
                                   {discountedPrice !== null ? (
                                     <Fragment>
                                       <span className="amount old">
-                                        {new Intl.NumberFormat(i18n.language, {style: "currency", currency: currency.currencyName}).format(finalProductPrice)}    
+                                        {currency.currencySymbol +
+                                          finalProductPrice}
                                       </span>
                                       <span className="amount">
-                                        {new Intl.NumberFormat(i18n.language, {style: "currency", currency: currency.currencyName}).format(finalProductPrice)}    
+                                        {currency.currencySymbol +
+                                          finalDiscountedPrice}
                                       </span>
                                     </Fragment>
                                   ) : (
                                     <span className="amount">
-                                      {new Intl.NumberFormat(i18n.language, {style: "currency", currency: currency.currencyName}).format(finalProductPrice)}    
+                                      {currency.currencySymbol +
+                                        finalProductPrice}
                                     </span>
                                   )}
                                 </td>

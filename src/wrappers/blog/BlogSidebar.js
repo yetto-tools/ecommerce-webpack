@@ -5,14 +5,14 @@ const BlogSidebar = () => {
   return (
     <div className="sidebar-style">
       <div className="sidebar-widget">
-        <h4 className="pro-sidebar-title">Buscar </h4>
+        <h4 className="pro-sidebar-title">Search </h4>
         <div className="pro-sidebar-search mb-55 mt-25">
           <form className="pro-sidebar-search-form" action="#">
-            <input type="text" placeholder="Buscar..." />
+            <input type="text" placeholder="Search here..." />
             <button>
               <i className="pe-7s-search" />
             </button>
-          </form> 
+          </form>
         </div>
       </div>
       <div className="sidebar-widget">

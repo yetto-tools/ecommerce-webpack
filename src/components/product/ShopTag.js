@@ -14,7 +14,7 @@ const ShopTag = ({ tags, getSortParams }) => {
                 <li key={key}>
                   <button
                     onClick={e => {
-                      getSortParams("tag", tag.name);
+                      getSortParams("tag", tag);
                       setActiveSort(e);
                     }}
                   >

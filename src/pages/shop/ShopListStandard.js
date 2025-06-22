@@ -20,7 +20,6 @@ const ShopListStandard = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [currentData, setCurrentData] = useState([]);
   const [sortedProducts, setSortedProducts] = useState([]);
-  
   const { products } = useSelector((state) => state.product);
 
   const pageLimit = 15;
@@ -71,7 +70,7 @@ const ShopListStandard = () => {
         <div className="shop-area pt-95 pb-100">
           <div className="container">
             <div className="row">
-              <div className="col-lg-3 order-2 order-lg-1 ">
+              <div className="col-lg-3 order-2 order-lg-1">
                 {/* shop sidebar */}
                 <ShopSidebar
                   products={products}

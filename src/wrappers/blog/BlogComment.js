@@ -4,11 +4,11 @@ const BlogComment = () => {
   return (
     <Fragment>
       <div className="blog-comment-wrapper mt-55">
-        <h4 className="blog-dec-title">comentario: 02</h4>
+        <h4 className="blog-dec-title">comments : 02</h4>
         <div className="single-comment-wrapper mt-35">
           <div className="blog-comment-img">
             <img
-              src={process.env.PUBLIC_URL + "/assets/img/blog/male-1.jpg"}
+              src={process.env.PUBLIC_URL + "/assets/img/blog/comment-1.jpg"}
               alt=""
             />
           </div>
@@ -25,7 +25,7 @@ const BlogComment = () => {
         <div className="single-comment-wrapper mt-50 ml-120">
           <div className="blog-comment-img">
             <img
-              src={process.env.PUBLIC_URL + "/assets/img/blog/male-2.jpg"}
+              src={process.env.PUBLIC_URL + "/assets/img/blog/comment-2.jpg"}
               alt=""
             />
           </div>
@@ -41,22 +41,22 @@ const BlogComment = () => {
         </div>
       </div>
       <div className="blog-reply-wrapper mt-50">
-        <h4 className="blog-dec-title">enviar un comentario</h4>
+        <h4 className="blog-dec-title">post a comment</h4>
         <form className="blog-form">
           <div className="row">
             <div className="col-md-6">
               <div className="leave-form">
-                <input type="text" placeholder="Nombre" />
+                <input type="text" placeholder="Full Name" />
               </div>
             </div>
             <div className="col-md-6">
               <div className="leave-form">
-                <input type="email" placeholder="Correo" />
+                <input type="email" placeholder="Email Address " />
               </div>
             </div>
             <div className="col-md-12">
               <div className="text-leave">
-                <textarea placeholder="Mensaje" defaultValue={""} />
+                <textarea placeholder="Message" defaultValue={""} />
                 <input type="submit" defaultValue="SEND MESSAGE" />
               </div>
             </div>

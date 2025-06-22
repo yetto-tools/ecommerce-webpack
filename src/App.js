@@ -1,18 +1,54 @@
-import { Suspense, lazy, useEffect, useState } from "react";
+import { Suspense, lazy } from "react";
 import ScrollToTop from "./helpers/scroll-top";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { fetchProducts } from "./hooks/use-FechDataProducts";
-import { setProducts } from "./store/slices/product-slice";
 
 // home pages
 const HomeFashion = lazy(() => import("./pages/home/HomeFashion"));
 const HomeFashionTwo = lazy(() => import("./pages/home/HomeFashionTwo"));
-// const HomeSelectedCategory = lazy(()=>import("./pages/home/HomeSelectedCategory"));
-
+const HomeFashionThree = lazy(() => import("./pages/home/HomeFashionThree"));
+const HomeFashionFour = lazy(() => import("./pages/home/HomeFashionFour"));
+const HomeFashionFive = lazy(() => import("./pages/home/HomeFashionFive"));
+const HomeFashionSix = lazy(() => import("./pages/home/HomeFashionSix"));
+const HomeFashionSeven = lazy(() => import("./pages/home/HomeFashionSeven"));
+const HomeFashionEight = lazy(() => import("./pages/home/HomeFashionEight"));
+const HomeKidsFashion = lazy(() => import("./pages/home/HomeKidsFashion"));
+const HomeCosmetics = lazy(() => import("./pages/home/HomeCosmetics"));
+const HomeFurniture = lazy(() => import("./pages/home/HomeFurniture"));
+const HomeFurnitureTwo = lazy(() => import("./pages/home/HomeFurnitureTwo"));
+const HomeFurnitureThree = lazy(() =>
+  import("./pages/home/HomeFurnitureThree")
+);
+const HomeFurnitureFour = lazy(() => import("./pages/home/HomeFurnitureFour"));
+const HomeFurnitureFive = lazy(() => import("./pages/home/HomeFurnitureFive"));
+const HomeFurnitureSix = lazy(() => import("./pages/home/HomeFurnitureSix"));
+const HomeFurnitureSeven = lazy(() =>
+  import("./pages/home/HomeFurnitureSeven")
+);
+const HomeElectronics = lazy(() => import("./pages/home/HomeElectronics"));
+const HomeElectronicsTwo = lazy(() =>
+  import("./pages/home/HomeElectronicsTwo")
+);
+const HomeElectronicsThree = lazy(() =>
+  import("./pages/home/HomeElectronicsThree")
+);
+const HomeBookStore = lazy(() => import("./pages/home/HomeBookStore"));
+const HomeBookStoreTwo = lazy(() => import("./pages/home/HomeBookStoreTwo"));
+const HomePlants = lazy(() => import("./pages/home/HomePlants"));
+const HomeFlowerShop = lazy(() => import("./pages/home/HomeFlowerShop"));
+const HomeFlowerShopTwo = lazy(() => import("./pages/home/HomeFlowerShopTwo"));
+const HomeOrganicFood = lazy(() => import("./pages/home/HomeOrganicFood"));
+const HomeOrganicFoodTwo = lazy(() =>
+  import("./pages/home/HomeOrganicFoodTwo")
+);
 const HomeOnepageScroll = lazy(() => import("./pages/home/HomeOnepageScroll"));
 const HomeGridBanner = lazy(() => import("./pages/home/HomeGridBanner"));
-
+const HomeAutoParts = lazy(() => import("./pages/home/HomeAutoParts"));
+const HomeCakeShop = lazy(() => import("./pages/home/HomeCakeShop"));
+const HomeHandmade = lazy(() => import("./pages/home/HomeHandmade"));
+const HomePetFood = lazy(() => import("./pages/home/HomePetFood"));
+const HomeMedicalEquipment = lazy(() =>
+  import("./pages/home/HomeMedicalEquipment")
+);
 const HomeChristmas = lazy(() => import("./pages/home/HomeChristmas"));
 const HomeBlackFriday = lazy(() => import("./pages/home/HomeBlackFriday"));
 const HomeBlackFridayTwo = lazy(() =>
@@ -22,8 +58,16 @@ const HomeValentinesDay = lazy(() => import("./pages/home/HomeValentinesDay"));
 
 // shop pages
 const ShopGridStandard = lazy(() => import("./pages/shop/ShopGridStandard"));
-
+const ShopGridFilter = lazy(() => import("./pages/shop/ShopGridFilter"));
+const ShopGridTwoColumn = lazy(() => import("./pages/shop/ShopGridTwoColumn"));
+const ShopGridNoSidebar = lazy(() => import("./pages/shop/ShopGridNoSidebar"));
+const ShopGridFullWidth = lazy(() => import("./pages/shop/ShopGridFullWidth"));
+const ShopGridRightSidebar = lazy(() =>
+  import("./pages/shop/ShopGridRightSidebar")
+);
 const ShopListStandard = lazy(() => import("./pages/shop/ShopListStandard"));
+const ShopListFullWidth = lazy(() => import("./pages/shop/ShopListFullWidth"));
+const ShopListTwoColumn = lazy(() => import("./pages/shop/ShopListTwoColumn"));
 
 // product pages
 const Product = lazy(() => import("./pages/shop-product/Product"));
@@ -61,97 +105,215 @@ const Checkout = lazy(() => import("./pages/other/Checkout"));
 const NotFound = lazy(() => import("./pages/other/NotFound"));
 
 const App = () => {
-  const dispatch = useDispatch();
-  const [isLoading, setIsLoading] = useState(true); // Estado para la carga de datos
-
-  useEffect(() => {
-    fetchProducts()
-      .then((products) => {
-        if (products) {
-          dispatch(setProducts(products));
-        }
-      })
-      .catch((error) => {
-        console.error("Error al cargar productos: ", error);
-      })
-      .finally(() => {
-        setIsLoading(false); // Actualiza el estado para indicar que la carga ha terminado
-      });
-  }, [dispatch]);
-
-  // Indicador de carga
-  const LoadingIndicator = (
-    <div className="flone-preloader-wrapper">
-      <div className="flone-preloader">
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  );
-
   return (
-    <Router>
-      <ScrollToTop>
-        <Suspense fallback={LoadingIndicator}>
-          {isLoading ? (
-            LoadingIndicator
-          ) : (
+      <Router>
+        <ScrollToTop>
+          <Suspense
+            fallback={
+              <div className="flone-preloader-wrapper">
+                <div className="flone-preloader">
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            }
+          >
             <Routes>
               <Route
                 path={process.env.PUBLIC_URL + "/"}
-                element={<HomeFashionTwo />}
+                element={<HomeFashion/>}
               />
 
               {/* Homepages */}
               <Route
                 path={process.env.PUBLIC_URL + "/home-fashion"}
-                element={<HomeFashion />}
+                element={<HomeFashion/>}
               />
               <Route
                 path={process.env.PUBLIC_URL + "/home-fashion-two"}
-                element={<HomeFashionTwo />}
+                element={<HomeFashionTwo/>}
               />
-
+              <Route
+                path={process.env.PUBLIC_URL + "/home-fashion-three"}
+                element={<HomeFashionThree/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-fashion-four"}
+                element={<HomeFashionFour/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-fashion-five"}
+                element={<HomeFashionFive/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-fashion-six"}
+                element={<HomeFashionSix/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-fashion-seven"}
+                element={<HomeFashionSeven/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-fashion-eight"}
+                element={<HomeFashionEight/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-kids-fashion"}
+                element={<HomeKidsFashion/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-cosmetics"}
+                element={<HomeCosmetics/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-furniture"}
+                element={<HomeFurniture/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-furniture-two"}
+                element={<HomeFurnitureTwo/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-furniture-three"}
+                element={<HomeFurnitureThree/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-furniture-four"}
+                element={<HomeFurnitureFour/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-furniture-five"}
+                element={<HomeFurnitureFive/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-furniture-six"}
+                element={<HomeFurnitureSix/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-furniture-seven"}
+                element={<HomeFurnitureSeven/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-electronics"}
+                element={<HomeElectronics/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-electronics-two"}
+                element={<HomeElectronicsTwo/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-electronics-three"}
+                element={<HomeElectronicsThree/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-book-store"}
+                element={<HomeBookStore/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-book-store-two"}
+                element={<HomeBookStoreTwo/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-plants"}
+                element={<HomePlants/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-flower-shop"}
+                element={<HomeFlowerShop/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-flower-shop-two"}
+                element={<HomeFlowerShopTwo/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-organic-food"}
+                element={<HomeOrganicFood/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-organic-food-two"}
+                element={<HomeOrganicFoodTwo/>}
+              />
               <Route
                 path={process.env.PUBLIC_URL + "/home-onepage-scroll"}
-                element={<HomeOnepageScroll />}
+                element={<HomeOnepageScroll/>}
               />
               <Route
                 path={process.env.PUBLIC_URL + "/home-grid-banner"}
-                element={<HomeGridBanner />}
+                element={<HomeGridBanner/>}
               />
-
+              <Route
+                path={process.env.PUBLIC_URL + "/home-auto-parts"}
+                element={<HomeAutoParts/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-cake-shop"}
+                element={<HomeCakeShop/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-handmade"}
+                element={<HomeHandmade/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-pet-food"}
+                element={<HomePetFood/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/home-medical-equipment"}
+                element={<HomeMedicalEquipment/>}
+              />
               <Route
                 path={process.env.PUBLIC_URL + "/home-christmas"}
-                element={<HomeChristmas />}
+                element={<HomeChristmas/>}
               />
               <Route
                 path={process.env.PUBLIC_URL + "/home-black-friday"}
-                element={<HomeBlackFriday />}
+                element={<HomeBlackFriday/>}
               />
               <Route
                 path={process.env.PUBLIC_URL + "/home-black-friday-two"}
-                element={<HomeBlackFridayTwo />}
+                element={<HomeBlackFridayTwo/>}
               />
               <Route
                 path={process.env.PUBLIC_URL + "/home-valentines-day"}
-                element={<HomeValentinesDay />}
+                element={<HomeValentinesDay/>}
               />
 
               {/* Shop pages */}
               <Route
                 path={process.env.PUBLIC_URL + "/shop-grid-standard"}
-                element={<ShopGridStandard />}
+                element={<ShopGridStandard/>}
               />
-
               <Route
-                path={process.env.PUBLIC_URL + "/collection"}
-                element={<ShopGridStandard />}
+                path={process.env.PUBLIC_URL + "/shop-grid-filter"}
+                element={<ShopGridFilter/>}
               />
-
+              <Route
+                path={process.env.PUBLIC_URL + "/shop-grid-two-column"}
+                element={<ShopGridTwoColumn/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/shop-grid-no-sidebar"}
+                element={<ShopGridNoSidebar/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/shop-grid-full-width"}
+                element={<ShopGridFullWidth/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/shop-grid-right-sidebar"}
+                element={<ShopGridRightSidebar/>}
+              />
               <Route
                 path={process.env.PUBLIC_URL + "/shop-list-standard"}
-                element={<ShopListStandard />}
+                element={<ShopListStandard/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/shop-list-full-width"}
+                element={<ShopListFullWidth/>}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/shop-list-two-column"}
+                element={<ShopListTwoColumn/>}
               />
 
               {/* Shop product pages */}
@@ -161,84 +323,83 @@ const App = () => {
               />
               <Route
                 path={process.env.PUBLIC_URL + "/product-tab-left/:id"}
-                element={<ProductTabLeft />}
+                element={<ProductTabLeft/>}
               />
               <Route
                 path={process.env.PUBLIC_URL + "/product-tab-right/:id"}
-                element={<ProductTabRight />}
+                element={<ProductTabRight/>}
               />
               <Route
                 path={process.env.PUBLIC_URL + "/product-sticky/:id"}
-                element={<ProductSticky />}
+                element={<ProductSticky/>}
               />
               <Route
                 path={process.env.PUBLIC_URL + "/product-slider/:id"}
-                element={<ProductSlider />}
+                element={<ProductSlider/>}
               />
               <Route
                 path={process.env.PUBLIC_URL + "/product-fixed-image/:id"}
-                element={<ProductFixedImage />}
-              />
+                element={<ProductFixedImage/>}
+              /> 
 
               {/* Blog pages */}
               <Route
                 path={process.env.PUBLIC_URL + "/blog-standard"}
-                element={<BlogStandard />}
+                element={<BlogStandard/>}
               />
               <Route
                 path={process.env.PUBLIC_URL + "/blog-no-sidebar"}
-                element={<BlogNoSidebar />}
+                element={<BlogNoSidebar/>}
               />
               <Route
                 path={process.env.PUBLIC_URL + "/blog-right-sidebar"}
-                element={<BlogRightSidebar />}
+                element={<BlogRightSidebar/>}
               />
               <Route
                 path={process.env.PUBLIC_URL + "/blog-details-standard"}
-                element={<BlogDetailsStandard />}
-              />
+                element={<BlogDetailsStandard/>}
+              /> 
 
               {/* Other pages */}
               <Route
                 path={process.env.PUBLIC_URL + "/about"}
-                element={<About />}
+                element={<About/>}
               />
               <Route
                 path={process.env.PUBLIC_URL + "/contact"}
-                element={<Contact />}
+                element={<Contact/>}
               />
               <Route
                 path={process.env.PUBLIC_URL + "/my-account"}
-                element={<MyAccount />}
+                element={<MyAccount/>}
               />
               <Route
                 path={process.env.PUBLIC_URL + "/login-register"}
-                element={<LoginRegister />}
+                element={<LoginRegister/>}
               />
 
               <Route
                 path={process.env.PUBLIC_URL + "/cart"}
-                element={<Cart />}
+                element={<Cart/>}
               />
-              {/* <Route
+              <Route
                 path={process.env.PUBLIC_URL + "/wishlist"}
                 element={<Wishlist/>}
-              /> */}
-              {/* <Route
+              />
+              <Route
                 path={process.env.PUBLIC_URL + "/compare"}
-                element={<Compare />}
-              /> */}
+                element={<Compare/>}
+              />
               <Route
                 path={process.env.PUBLIC_URL + "/checkout"}
-                element={<Checkout />}
-              />
+                element={<Checkout/>}
+              /> 
 
-              <Route path="*" element={<NotFound />} />
+              <Route path="*" element={<NotFound/>} />
             </Routes>
-          )}
-        </Suspense>
-      </ScrollToTop>
-    </Router>
+          </Suspense>
+        </ScrollToTop>
+      </Router>
   );
 };
 

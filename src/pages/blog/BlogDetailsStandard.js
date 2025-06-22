@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import SEO from "../../components/seo";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
-
+import BlogSidebar from "../../wrappers/blog/BlogSidebar";
 import BlogComment from "../../wrappers/blog/BlogComment";
 import BlogPost from "../../wrappers/blog/BlogPost";
 
@@ -13,15 +13,15 @@ const BlogDetailsStandard = () => {
   return (
     <Fragment>
       <SEO
-        titleTemplate="New Era"
-        description="Noticiias."
+        titleTemplate="Blog Post"
+        description="Blog Post of flone react minimalist eCommerce template."
       />
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
         <Breadcrumb 
           pages={[
-            {label: "Inicio", path: process.env.PUBLIC_URL + "/" },
-            {label: "Noticias", path: process.env.PUBLIC_URL + pathname }
+            {label: "Home", path: process.env.PUBLIC_URL + "/" },
+            {label: "Blog Post", path: process.env.PUBLIC_URL + pathname }
           ]} 
         />
         <div className="blog-area pt-100 pb-100">
@@ -38,7 +38,7 @@ const BlogDetailsStandard = () => {
               </div>
               <div className="col-lg-3">
                 {/* blog sidebar */}
-                {/* <BlogSidebar /> */}
+                <BlogSidebar />
               </div>
             </div>
           </div>

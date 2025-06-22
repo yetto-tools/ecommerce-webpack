@@ -9,7 +9,6 @@ import ProductModal from "./ProductModal";
 import { addToCart } from "../../store/slices/cart-slice";
 import { addToWishlist } from "../../store/slices/wishlist-slice";
 import { addToCompare } from "../../store/slices/compare-slice";
-import { useTranslation } from "react-i18next";
 
 const ProductGridSingleEight = ({
   product,
@@ -20,7 +19,6 @@ const ProductGridSingleEight = ({
   spaceBottomClass,
   colorClass
 }) => {
-  const {t,i18n} = useTranslation()
   const [modalShow, setModalShow] = useState(false);
   const discountedPrice = getDiscountPrice(product.price, product.discount);
   const finalProductPrice = +(product.price * currency.currencyRate).toFixed(2);
@@ -47,7 +45,7 @@ const ProductGridSingleEight = ({
               ) : (
                 ""
               )}
-              {product.new ? <span className="purple">{t("general_words.new")}</span> : ""}
+              {product.new ? <span className="purple">New</span> : ""}
             </div>
           ) : (
             ""
@@ -64,16 +62,12 @@ const ProductGridSingleEight = ({
             {discountedPrice !== null ? (
               <Fragment>
                 <span className="old">
-                  {new Intl.NumberFormat(i18n.language, {style: "currency", currency: currency.currencyName}).format(finalProductPrice)}    
+                  {currency.currencySymbol + finalProductPrice}
                 </span>
-                <span>
-                  {new Intl.NumberFormat(i18n.language, {style: "currency", currency: currency.currencyName}).format(finalDiscountedPrice)}    
-                  </span>
+                <span>{currency.currencySymbol + finalDiscountedPrice}</span>
               </Fragment>
             ) : (
-              <span>
-                {new Intl.NumberFormat(i18n.language, {style: "currency", currency: currency.currencyName}).format(finalProductPrice)}    
-              </span>
+              <span>{currency.currencySymbol + finalProductPrice} </span>
             )}
           </div>
 

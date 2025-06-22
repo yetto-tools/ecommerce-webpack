@@ -10,7 +10,7 @@ const LayoutTwo = ({ children, footerBgClass }) => {
       <HeaderTwo />
       {children}
       <FooterOne
-        backgroundColorClass={footerBgClass ? footerBgClass : "bg-black-ne"}
+        backgroundColorClass={footerBgClass ? footerBgClass : "bg-gray"}
         spaceTopClass="pt-100"
         spaceBottomClass="pb-70"
       />

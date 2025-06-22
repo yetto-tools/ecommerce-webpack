@@ -8,8 +8,6 @@ import { getDiscountPrice } from "../../helpers/product";
 import ProductModal from "./ProductModal";
 import { addToCart } from "../../store/slices/cart-slice";
 import { addToWishlist } from "../../store/slices/wishlist-slice";
-import { useTranslation } from "react-i18next";
-import { CurrencyFormatter } from "../../helpers/currencyFormatter";
 
 const ProductGridSingle = ({
   product,
@@ -19,13 +17,10 @@ const ProductGridSingle = ({
   compareItem,
   spaceBottomClass
 }) => {
-
-  const {t,i18n} = useTranslation();
-
   const [modalShow, setModalShow] = useState(false);
   const discountedPrice = getDiscountPrice(product.price, product.discount);
   const finalProductPrice = +(product.price * currency.currencyRate).toFixed(2);
-  const finalDiscountedPrice =+(
+  const finalDiscountedPrice = +(
     discountedPrice * currency.currencyRate
   ).toFixed(2);
   const dispatch = useDispatch();
@@ -57,7 +52,7 @@ const ProductGridSingle = ({
               ) : (
                 ""
               )}
-              {product.new ? <span className="purple">{t("general_words.new")}</span> : ""}
+              {product.new ? <span className="purple">New</span> : ""}
             </div>
           ) : (
             ""
@@ -86,11 +81,11 @@ const ProductGridSingle = ({
                   target="_blank"
                 >
                   {" "}
-                  Comprar Ya{" "}
+                  Buy now{" "}
                 </a>
               ) : product.variation && product.variation.length >= 1 ? (
                 <Link to={`${process.env.PUBLIC_URL}/product/${product.id}`}>
-                  Ver Detalle
+                  Select Option
                 </Link>
               ) : product.stock && product.stock > 0 ? (
                 <button
@@ -102,18 +97,18 @@ const ProductGridSingle = ({
                   }
                   disabled={cartItem !== undefined && cartItem.quantity > 0}
                   title={
-                    cartItem !== undefined ? "Añadido" : "Añadir"
+                    cartItem !== undefined ? "Added to cart" : "Add to cart"
                   }
                 >
                   {" "}
                   <i className="pe-7s-cart"></i>{" "}
                   {cartItem !== undefined && cartItem.quantity > 0
-                    ? "Añadido"
-                    : "Añadir"}
+                    ? "Added"
+                    : "Add to cart"}
                 </button>
               ) : (
                 <button disabled className="active">
-                  Agotado
+                  Out of Stock
                 </button>
               )}
             </div>
@@ -138,19 +133,15 @@ const ProductGridSingle = ({
             ""
           )}
           <div className="product-price">
-            {discountedPrice !== null || discountedPrice === 0 ? (
+            {discountedPrice !== null ? (
               <Fragment>
-                <span>
-                  {CurrencyFormatter(finalProductPrice, i18n, currency)}
-                </span>{" "}
+                <span>{currency.currencySymbol + finalDiscountedPrice}</span>{" "}
                 <span className="old">
-                  {CurrencyFormatter(finalProductPrice, i18n, currency)}
+                  {currency.currencySymbol + finalProductPrice}
                 </span>
               </Fragment>
             ) : (
-              <span>
-                {CurrencyFormatter(finalProductPrice, i18n, currency)}
-              </span>
+              <span>{currency.currencySymbol + finalProductPrice} </span>
             )}
           </div>
         </div>

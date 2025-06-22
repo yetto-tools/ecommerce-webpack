@@ -2,21 +2,21 @@
   {
     "id": 1,
     "image": "/assets/img/banner/banner21.jpg",
-    "title": "",
+    "title": "New Arrivals",
     "subtitle": "Choose your products here",
     "link": "/shop-grid-standard"
   },
   {
     "id": 2,
     "image": "/assets/img/banner/banner22.jpg",
-    "title": "Colaciones",
+    "title": "Featured Products",
     "subtitle": "Choose your products here",
     "link": "/shop-grid-standard"
   },
   {
     "id": 3,
     "image": "/assets/img/banner/banner23.jpg",
-    "title": "Lo mas Vendido",
+    "title": "Best Seller",
     "subtitle": "Choose your products here",
     "link": "/shop-grid-standard"
   }

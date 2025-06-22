@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 
 import { setActiveLayout } from "../../helpers/product";
-import { useTranslation } from "react-i18next";
 
 const ShopTopAction = ({
   getLayout,
@@ -9,9 +8,6 @@ const ShopTopAction = ({
   productCount,
   sortedProductCount
 }) => {
-
-  const { t } = useTranslation();
-
   return (
     <div className="shop-top-bar mb-35">
       <div className="select-shoing-wrap">
@@ -19,13 +15,13 @@ const ShopTopAction = ({
           <select
             onChange={e => getFilterSortParams("filterSort", e.target.value)}
           >
-            <option value="default">{t("shop_select_filter_sort.default")}</option>
-            <option value="priceHighToLow">{t("shop_select_filter_sort.high_to_low")}</option>
-            <option value="priceLowToHigh">{t("shop_select_filter_sort.low_to_hight")}</option>
+            <option value="default">Default</option>
+            <option value="priceHighToLow">Price - High to Low</option>
+            <option value="priceLowToHigh">Price - Low to High</option>
           </select>
         </div>
         <p>
-        {t("shop_select_filter_sort.showing")} {sortedProductCount} {t("shop_select_filter_sort.of")} {productCount} {t("shop_select_filter_sort.result")}
+          Showing {sortedProductCount} of {productCount} result
         </p>
       </div>
 

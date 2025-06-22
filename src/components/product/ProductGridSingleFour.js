@@ -8,7 +8,6 @@ import ProductModal from "./ProductModal";
 import { addToCart } from "../../store/slices/cart-slice";
 import { addToWishlist } from "../../store/slices/wishlist-slice";
 import { addToCompare } from "../../store/slices/compare-slice";
-import { useTranslation } from "react-i18next";
 
 const ProductGridSingleFour = ({
   product,
@@ -18,9 +17,6 @@ const ProductGridSingleFour = ({
   compareItem,
   spaceBottomClass
 }) => {
-  
-  const {t} = useTranslation();
-
   const [modalShow, setModalShow] = useState(false);
 
   const discountedPrice = getDiscountPrice(product.price, product.discount);
@@ -48,7 +44,7 @@ const ProductGridSingleFour = ({
               ) : (
                 ""
               )}
-              {product.new ? <span className="purple">{t("general_words.new")}</span> : ""}
+              {product.new ? <span className="purple">New</span> : ""}
             </div>
           ) : (
             ""
@@ -66,11 +62,7 @@ const ProductGridSingleFour = ({
                 }
                 onClick={() => dispatch(addToWishlist(product))}
               >
-{
-                wishlistItem !== undefined 
-                ? <i className="fa fa-heart" /> 
-                : <i className="fa fa-heart-o " /> 
-              }
+                <i className="fa fa-heart-o" />
               </button>
             </div>
             <div className="pro-same-action pro-cart">
@@ -89,7 +81,7 @@ const ProductGridSingleFour = ({
                   to={`${process.env.PUBLIC_URL}/product/${product.id}`}
                   title="Select options"
                 >
-                  <i class="fa fa-info-circle"></i>
+                  <i class="fa fa-cog"></i>
                 </Link>
               ) : product.stock && product.stock > 0 ? (
                 <button

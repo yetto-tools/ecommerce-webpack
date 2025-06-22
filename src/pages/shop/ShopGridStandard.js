@@ -1,7 +1,3 @@
-// orlando 
-// 2023-12-02
-// vista de productos  con filtros
-
 import { Fragment, useState, useEffect } from 'react';
 import Paginator from 'react-hooks-paginator';
 import { useSelector } from "react-redux";
@@ -14,7 +10,6 @@ import ShopSidebar from '../../wrappers/product/ShopSidebar';
 import ShopTopbar from '../../wrappers/product/ShopTopbar';
 import ShopProducts from '../../wrappers/product/ShopProducts';
 
-
 const ShopGridStandard = () => {
     const [layout, setLayout] = useState('grid three-column');
     const [sortType, setSortType] = useState('');
@@ -26,11 +21,9 @@ const ShopGridStandard = () => {
     const [currentData, setCurrentData] = useState([]);
     const [sortedProducts, setSortedProducts] = useState([]);
     const { products } = useSelector((state) => state.product);
-       
 
     const pageLimit = 15;
     let { pathname } = useLocation();
-    
 
     const getLayout = (layout) => {
         setLayout(layout)
@@ -57,16 +50,16 @@ const ShopGridStandard = () => {
     return (
         <Fragment>
             <SEO
-                titleTemplate="Tienda en Linea"
-                description="Tienda en Linea de New Era"
+                titleTemplate="Shop Page"
+                description="Shop page of flone react minimalist eCommerce template."
             />
 
             <LayoutOne headerTop="visible">
                 {/* breadcrumb */}
                 <Breadcrumb 
                     pages={[
-                        {label: "Inicio", path: process.env.PUBLIC_URL + "/" },
-                        {label: "Tienda", path: process.env.PUBLIC_URL + pathname }
+                        {label: "Home", path: process.env.PUBLIC_URL + "/" },
+                        {label: "Shop", path: process.env.PUBLIC_URL + pathname }
                     ]} 
                 />
 

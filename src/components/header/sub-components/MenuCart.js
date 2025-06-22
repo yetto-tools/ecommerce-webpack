@@ -3,14 +3,12 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getDiscountPrice } from "../../../helpers/product";
 import { deleteFromCart } from "../../../store/slices/cart-slice"
-import { useTranslation } from "react-i18next";
 
 const MenuCart = () => {
   const dispatch = useDispatch();
   const currency = useSelector((state) => state.currency);
   const { cartItems } = useSelector((state) => state.cart);
   let cartTotalPrice = 0;
-  const {t,i18n} = useTranslation();
 
   return (
     <div className="shopping-cart-content">
@@ -45,7 +43,7 @@ const MenuCart = () => {
                     </Link>
                   </div>
                   <div className="shopping-cart-title">
-                    <h4 className="mb-4">
+                    <h4>
                       <Link
                         to={process.env.PUBLIC_URL + "/product/" + item.id}
                       >
@@ -53,27 +51,21 @@ const MenuCart = () => {
                         {item.name}{" "}
                       </Link>
                     </h4>
-                    <h6>{t("page_cart.th_qty")}: {item.quantity}</h6>
-                    <h6>
-                    { "Precio" }: {' '}
-                      {
-                        discountedPrice !== null
-                        ? (new Intl.NumberFormat(i18n.language, {style: "currency", currency: currency.currencyName}).format(finalDiscountedPrice))
-                        : (new Intl.NumberFormat(i18n.language, {style: "currency", currency: currency.currencyName}).format(finalProductPrice))
-                      }
-                    </h6>
-                    <span className="">
-                    {
-                    item.selectedProductColor &&
+                    <h6>Qty: {item.quantity}</h6>
+                    <span>
+                      {discountedPrice !== null
+                        ? currency.currencySymbol + finalDiscountedPrice
+                        : currency.currencySymbol + finalProductPrice}
+                    </span>
+                    {item.selectedProductColor &&
                     item.selectedProductSize ? (
                       <div className="cart-item-variation">
-                        <h6>Color: {item.selectedProductColor}</h6>
-                        <h6>{t("general_words.size")}: {item.selectedProductSize}</h6>
+                        <span>Color: {item.selectedProductColor}</span>
+                        <span>Size: {item.selectedProductSize}</span>
                       </div>
                     ) : (
                       ""
                     )}
-                    </span>
                   </div>
                   <div className="shopping-cart-delete">
                     <button onClick={() => dispatch(deleteFromCart(item.cartItemId))}>
@@ -88,20 +80,19 @@ const MenuCart = () => {
             <h4>
               Total :{" "}
               <span className="shop-total">
-                
-                {new Intl.NumberFormat(i18n.language, {style: "currency", currency: currency.currencyName}).format(cartTotalPrice)}
+                {currency.currencySymbol + cartTotalPrice.toFixed(2)}
               </span>
             </h4>
           </div>
           <div className="shopping-cart-btn btn-hover text-center">
             <Link className="default-btn" to={process.env.PUBLIC_URL + "/cart"}>
-              {t("general_words.view_cart")}
+              view cart
             </Link>
             <Link
               className="default-btn"
               to={process.env.PUBLIC_URL + "/checkout"}
             >
-              {t("checkout")}
+              checkout
             </Link>
           </div>
         </Fragment>

@@ -8,7 +8,6 @@ import { getDiscountPrice } from "../../helpers/product";
 import ProductModal from "./ProductModal";
 import { addToCart } from "../../store/slices/cart-slice";
 import { addToWishlist } from "../../store/slices/wishlist-slice";
-import { useTranslation } from "react-i18next";
 
 const ProductGridSingle = ({
     product,
@@ -18,7 +17,6 @@ const ProductGridSingle = ({
     compareItem,
     spaceBottomClass
 }) => {
-    const {t,i18n} = useTranslation();
     const [modalShow, setModalShow] = useState(false);
     const discountedPrice = getDiscountPrice(product.price, product.discount);
     const finalProductPrice = +(product.price * currency.currencyRate).toFixed(2);
@@ -54,7 +52,7 @@ const ProductGridSingle = ({
                     ) : (
                     ""
                     )}
-                    {product.new ? <span className="purple">{t("general_words.new")}</span> : ""}
+                    {product.new ? <span className="purple">New</span> : ""}
                 </div>
                 ) : (
                 ""
@@ -87,7 +85,7 @@ const ProductGridSingle = ({
                     </a>
                     ) : product.variation && product.variation.length >= 1 ? (
                     <Link to={`${process.env.PUBLIC_URL}/product/${product.id}`}>
-                        Seleccionar 
+                        Select Option
                     </Link>
                     ) : product.stock && product.stock > 0 ? (
                     <button
@@ -137,17 +135,13 @@ const ProductGridSingle = ({
                 <div className="product-price">
                 {discountedPrice !== null ? (
                     <Fragment>
-                    <span>
-                        {new Intl.NumberFormat(i18n.language, {style: "currency", currency: currency.currencyName}).format(finalProductPrice)}    
-                    </span>{" "}
+                    <span>{currency.currencySymbol + finalDiscountedPrice}</span>{" "}
                     <span className="old">
-                        {new Intl.NumberFormat(i18n.language, {style: "currency", currency: currency.currencyName}).format(finalProductPrice)}    
+                        {currency.currencySymbol + finalProductPrice}
                     </span>
                     </Fragment>
                 ) : (
-                    <span>
-                        {new Intl.NumberFormat(i18n.language, {style: "currency", currency: currency.currencyName}).format(finalProductPrice)}    
-                    </span>
+                    <span>{currency.currencySymbol + finalProductPrice} </span>
                 )}
                 </div>
             </div>

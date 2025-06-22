@@ -5,24 +5,22 @@ import Nav from "react-bootstrap/Nav";
 import SEO from "../../components/seo";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
-import { useTranslation } from "react-i18next";
 
 const LoginRegister = () => {
   let { pathname } = useLocation();
-  const {t} = useTranslation();
 
   return (
     <Fragment>
       <SEO
-        titleTemplate={t("seo.page_login_register.title")}
-        description={t("seo.login_register")}
+        titleTemplate="Login"
+        description="Login page of flone react minimalist eCommerce template."
       />
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
         <Breadcrumb 
           pages={[
-            {label: t("page_login_register.label_home"), path: process.env.PUBLIC_URL + "/" },
-            {label: t("page_login_register.label_login"), path: process.env.PUBLIC_URL + pathname }
+            {label: "Home", path: process.env.PUBLIC_URL + "/" },
+            {label: "Login Register", path: process.env.PUBLIC_URL + pathname }
           ]} 
         />
         <div className="login-register-area pt-100 pb-100">
@@ -34,12 +32,12 @@ const LoginRegister = () => {
                     <Nav variant="pills" className="login-register-tab-list">
                       <Nav.Item>
                         <Nav.Link eventKey="login">
-                          <h4>{t("page_login_register.login")}</h4>
+                          <h4>Login</h4>
                         </Nav.Link>
                       </Nav.Item>
                       <Nav.Item>
                         <Nav.Link eventKey="register">
-                          <h4>{t("page_login_register.register")}</h4>
+                          <h4>Register</h4>
                         </Nav.Link>
                       </Nav.Item>
                     </Nav>
@@ -51,23 +49,23 @@ const LoginRegister = () => {
                               <input
                                 type="text"
                                 name="user-name"
-                                placeholder={t("page_login_register.placeholder_input_user")}
+                                placeholder="Username"
                               />
                               <input
                                 type="password"
                                 name="user-password"
-                                placeholder={t("page_login_register.placeholder_input_password")}
+                                placeholder="Password"
                               />
                               <div className="button-box">
                                 <div className="login-toggle-btn">
                                   <input type="checkbox" />
-                                  <label className="ml-10">{t("page_login_register.remember_me")}</label>
+                                  <label className="ml-10">Remember me</label>
                                   <Link to={process.env.PUBLIC_URL + "/"}>
-                                  {t("page_login_register.forgot_password")}
+                                    Forgot Password?
                                   </Link>
                                 </div>
                                 <button type="submit">
-                                  <span>{t("page_login_register.login")}</span>
+                                  <span>Login</span>
                                 </button>
                               </div>
                             </form>
@@ -81,21 +79,21 @@ const LoginRegister = () => {
                               <input
                                 type="text"
                                 name="user-name"
-                                placeholder={t("page_login_register.placeholder_input_user")}
+                                placeholder="Username"
                               />
                               <input
                                 type="password"
                                 name="user-password"
-                                placeholder={t("page_login_register.placeholder_input_password")}
+                                placeholder="Password"
                               />
                               <input
                                 name="user-email"
-                                placeholder={t("page_login_register.placeholder_input_email")}
+                                placeholder="Email"
                                 type="email"
                               />
                               <div className="button-box">
                                 <button type="submit">
-                                  <span>{t("page_login_register.register")}</span>
+                                  <span>Register</span>
                                 </button>
                               </div>
                             </form>

@@ -1,3 +1,5 @@
+
+
 const MobileWidgets = () => {
   return (
     <div className="offcanvas-widget-area">
@@ -20,13 +22,10 @@ const MobileWidgets = () => {
         <a href="//twitter.com" title="Twitter">
           <i className="fa fa-twitter"></i>
         </a>
-        <a href="https://www.instagram.com/hypestreetstore/" title="Instagram">
+        <a href="//instagram.com" title="Instagram">
           <i className="fa fa-instagram"></i>
         </a>
-        <a
-          href="https://www.facebook.com/Hypestreetstoree?locale=es_LA"
-          title="Facebook"
-        >
+        <a href="//facebook.com" title="Facebook">
           <i className="fa fa-facebook"></i>
         </a>
         <a href="//pinterest.com" title="Pinterest">

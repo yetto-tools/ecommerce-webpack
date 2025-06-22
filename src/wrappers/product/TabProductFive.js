@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
 import ProductGridTwo from "./ProductGridTwo";
-import { useTranslation } from "react-i18next";
 
 const TabProductFive = ({
   spaceTopClass,
@@ -12,9 +11,6 @@ const TabProductFive = ({
   category,
   productTabClass
 }) => {
-
-  const {t} = useTranslation();
-
   return (
     <div className={clsx("product-area", spaceTopClass, spaceBottomClass)}>
       <div className="container">
@@ -25,17 +21,17 @@ const TabProductFive = ({
           >
             <Nav.Item>
               <Nav.Link eventKey="newArrival">
-                <h4>{t("tab_product.new_array")}</h4>
+                <h4>New Arrivals</h4>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link eventKey="bestSeller">
-                <h4>{t("tab_product.best_seller")}</h4>
+                <h4>Best Sellers</h4>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link eventKey="saleItems">
-                <h4>{t("tab_product.sale_items")}</h4>
+                <h4>Sale Items</h4>
               </Nav.Link>
             </Nav.Item>
           </Nav>
@@ -73,11 +69,11 @@ const TabProductFive = ({
           </Tab.Content>
         </Tab.Container>
         <div className="view-more text-center mt-20 toggle-btn6 col-12">
-        <Link
-            className="loadMore6 uppercase"
+          <Link
+            className="loadMore6"
             to={process.env.PUBLIC_URL + "/shop-grid-standard"}
           >
-            {t("tab_product.view_more_products")}
+            VIEW MORE PRODUCTS
           </Link>
         </div>
       </div>

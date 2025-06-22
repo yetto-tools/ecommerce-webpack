@@ -9,7 +9,7 @@ const BlogFeatured = ({ spaceTopClass, spaceBottomClass }) => {
     <div className={clsx("blog-area", spaceTopClass, spaceBottomClass)}>
       <div className="container">
         <SectionTitle
-          titleText="Noticias"
+          titleText="OUR BLOG"
           positionClass="text-center"
           spaceClass="mb-55"
         />

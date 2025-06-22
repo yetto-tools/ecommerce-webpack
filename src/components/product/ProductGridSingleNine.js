@@ -8,7 +8,6 @@ import ProductModal from "./ProductModal";
 import { addToCart } from "../../store/slices/cart-slice";
 import { addToWishlist } from "../../store/slices/wishlist-slice";
 import { addToCompare } from "../../store/slices/compare-slice";
-import { useTranslation } from "react-i18next";
 
 const ProductGridSingleNine = ({
   product,
@@ -19,7 +18,6 @@ const ProductGridSingleNine = ({
   spaceBottomClass,
   colorClass
 }) => {
-  const {t} = useTranslation();
   const [modalShow, setModalShow] = useState(false);
   const discountedPrice = getDiscountPrice(product.price, product.discount);
   const finalProductPrice = +(product.price * currency.currencyRate).toFixed(2);
@@ -57,7 +55,7 @@ const ProductGridSingleNine = ({
               ) : (
                 ""
               )}
-              {product.new ? <span className="purple">{t("general_words.new")}</span> : ""}
+              {product.new ? <span className="purple">New</span> : ""}
             </div>
           ) : (
             ""
@@ -79,7 +77,7 @@ const ProductGridSingleNine = ({
                 to={`${process.env.PUBLIC_URL}/product/${product.id}`}
                 title="Select options"
               >
-                <i className="fa fa-info-circle"></i>
+                <i className="fa fa-cog"></i>
               </Link>
             ) : product.stock && product.stock > 0 ? (
               <button
@@ -153,11 +151,7 @@ const ProductGridSingleNine = ({
               }
               onClick={() => dispatch(addToWishlist(product))}
             >
-{
-                wishlistItem !== undefined 
-                ? <i className="fa fa-heart" /> 
-                : <i className="fa fa-heart-o " /> 
-              }
+              <i className="fa fa-heart-o" />
             </button>
           </div>
         </div>

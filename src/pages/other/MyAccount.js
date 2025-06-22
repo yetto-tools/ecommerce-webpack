@@ -4,16 +4,15 @@ import Accordion from "react-bootstrap/Accordion";
 import SEO from "../../components/seo";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
-import { useTranslation } from "react-i18next";
 
 const MyAccount = () => {
   let { pathname } = useLocation();
-  const {t} = useTranslation();
+
   return (
     <Fragment>
       <SEO
-        titleTemplate={t("page_my_account.title")}
-        description={t("seo.my_account")}
+        titleTemplate="My Account"
+        description="My Account page of flone react minimalist eCommerce template."
       />
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
@@ -32,49 +31,49 @@ const MyAccount = () => {
                   <Accordion defaultActiveKey="0">
                     <Accordion.Item eventKey="0" className="single-my-account mb-20">
                       <Accordion.Header className="panel-heading">
-                        <span className="fw-600">1 .</span> { t("page_my_account.step_one") } {" "}
+                        <span>1 .</span> Edit your account information{" "}
                       </Accordion.Header>
                       <Accordion.Body>
                           <div className="myaccount-info-wrapper">
                             <div className="account-info-wrapper">
-                              <h4 className="fw-600">{ t("page_my_account.my_account_information") }</h4>
-                              <h5>{ t("page_my_account.my_personal_detail") }</h5>
+                              <h4>My Account Information</h4>
+                              <h5>Your Personal Details</h5>
                             </div>
                             <div className="row">
                               <div className="col-lg-6 col-md-6">
                                 <div className="billing-info">
-                                  <label>{ t("page_my_account.first_name") }</label>
+                                  <label>First Name</label>
                                   <input type="text" />
                                 </div>
                               </div>
                               <div className="col-lg-6 col-md-6">
                                 <div className="billing-info">
-                                  <label>{ t("page_my_account.last_name") }</label>
+                                  <label>Last Name</label>
                                   <input type="text" />
                                 </div>
                               </div>
                               <div className="col-lg-12 col-md-12">
                                 <div className="billing-info">
-                                  <label>{ t("page_my_account.email_address") }</label>
+                                  <label>Email Address</label>
                                   <input type="email" />
                                 </div>
                               </div>
                               <div className="col-lg-6 col-md-6">
                                 <div className="billing-info">
-                                  <label>{ t("page_my_account.phone") }</label>
+                                  <label>Telephone</label>
                                   <input type="text" />
                                 </div>
                               </div>
                               <div className="col-lg-6 col-md-6">
                                 <div className="billing-info">
-                                  <label>{ t("page_my_account.mobile") }</label>
+                                  <label>Fax</label>
                                   <input type="text" />
                                 </div>
                               </div>
                             </div>
                             <div className="billing-back-btn">
                               <div className="billing-btn">
-                                <button type="submit">{ t("page_my_account.submit") }</button>
+                                <button type="submit">Continue</button>
                               </div>
                             </div>
                           </div>
@@ -84,31 +83,31 @@ const MyAccount = () => {
 
                     <Accordion.Item eventKey="1" className="single-my-account mb-20">
                       <Accordion.Header className="panel-heading">
-                          <span className="fw-600">2 .</span> { t("page_my_account.step_two") }
+                          <span>2 .</span> Change your password
                       </Accordion.Header>
                       <Accordion.Body>
                           <div className="myaccount-info-wrapper">
                             <div className="account-info-wrapper">
-                              <h4 className="fw-600">{ t("page_my_account.change_password") }</h4>
-                              <h5>{ t("page_my_account.password") }</h5>
+                              <h4>Change Password</h4>
+                              <h5>Your Password</h5>
                             </div>
                             <div className="row">
                               <div className="col-lg-12 col-md-12">
                                 <div className="billing-info">
-                                  <label>{ t("page_my_account.password") }</label>
+                                  <label>Password</label>
                                   <input type="password" />
                                 </div>
                               </div>
                               <div className="col-lg-12 col-md-12">
                                 <div className="billing-info">
-                                  <label>{ t("page_my_account.password_confirm") }</label>
+                                  <label>Password Confirm</label>
                                   <input type="password" />
                                 </div>
                               </div>
                             </div>
                             <div className="billing-back-btn">
                               <div className="billing-btn">
-                                <button type="submit">{t("page_my_account.submit")}</button>
+                                <button type="submit">Continue</button>
                               </div>
                             </div>
                           </div>
@@ -117,12 +116,12 @@ const MyAccount = () => {
 
                     <Accordion.Item eventKey="2" className="single-my-account mb-20">
                       <Accordion.Header className="panel-heading">
-                          <span>3 .</span> {t("page_my_account.step_three")}
+                          <span>3 .</span> Modify your address book entries
                       </Accordion.Header>
                       <Accordion.Body>
                           <div className="myaccount-info-wrapper">
                             <div className="account-info-wrapper">
-                              <h4 className="fw-600">{t("page_my_account.address_entry")}</h4>
+                              <h4>Address Book Entries</h4>
                             </div>
                             <div className="entries-wrapper">
                               <div className="row">
@@ -137,15 +136,15 @@ const MyAccount = () => {
                                 </div>
                                 <div className="col-lg-6 col-md-6 d-flex align-items-center justify-content-center">
                                   <div className="entries-edit-delete text-center">
-                                    <button className="edit">{t("page_my_account.edit")}</button>
-                                    <button>{t("page_my_account.delete")}</button>
+                                    <button className="edit">Edit</button>
+                                    <button>Delete</button>
                                   </div>
                                 </div>
                               </div>
                             </div>
                             <div className="billing-back-btn">
                               <div className="billing-btn">
-                                <button type="submit">{t("page_my_account.submit")}</button>
+                                <button type="submit">Continue</button>
                               </div>
                             </div>
                           </div>

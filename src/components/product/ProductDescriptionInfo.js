@@ -6,8 +6,7 @@ import { getProductCartQuantity } from "../../helpers/product";
 import Rating from "./sub-components/ProductRating";
 import { addToCart } from "../../store/slices/cart-slice";
 import { addToWishlist } from "../../store/slices/wishlist-slice";
-import { useTranslation } from "react-i18next";
-import { CurrencyFormatter } from "../../helpers/currencyFormatter";
+import { addToCompare } from "../../store/slices/compare-slice";
 
 const ProductDescriptionInfo = ({
   product,
@@ -17,9 +16,8 @@ const ProductDescriptionInfo = ({
   finalProductPrice,
   cartItems,
   wishlistItem,
+  compareItem,
 }) => {
-  const { t, i18n } = useTranslation();
-
   const dispatch = useDispatch();
   const [selectedProductColor, setSelectedProductColor] = useState(
     product.variation ? product.variation[0].color : ""
@@ -47,11 +45,11 @@ const ProductDescriptionInfo = ({
           <Fragment>
             <span>{currency.currencySymbol + finalDiscountedPrice}</span>{" "}
             <span className="old">
-              {CurrencyFormatter(finalProductPrice, i18n, currency)}
+              {currency.currencySymbol + finalProductPrice}
             </span>
           </Fragment>
         ) : (
-          <span>{CurrencyFormatter(finalProductPrice, i18n, currency)}</span>
+          <span>{currency.currencySymbol + finalProductPrice} </span>
         )}
       </div>
       {product.rating && product.rating > 0 ? (
@@ -99,10 +97,10 @@ const ProductDescriptionInfo = ({
             </div>
           </div>
           <div className="pro-details-size">
-            <span>{t("general_words.size")}</span>
+            <span>Size</span>
             <div className="pro-details-size-content">
               {product.variation &&
-                product.variation.map((single) => {
+                product.variation.map(single => {
                   return single.color === selectedProductColor
                     ? single.size.map((singleSize, key) => {
                         return (
@@ -182,30 +180,20 @@ const ProductDescriptionInfo = ({
             {productStock && productStock > 0 ? (
               <button
                 onClick={() =>
-                  dispatch(
-                    addToCart({
-                      ...product,
-                      quantity: quantityCount,
-                      selectedProductColor: selectedProductColor
-                        ? selectedProductColor
-                        : product.selectedProductColor
-                        ? product.selectedProductColor
-                        : null,
-                      selectedProductSize: selectedProductSize
-                        ? selectedProductSize
-                        : product.selectedProductSize
-                        ? product.selectedProductSize
-                        : null,
-                    })
-                  )
+                  dispatch(addToCart({
+                    ...product,
+                    quantity: quantityCount,
+                    selectedProductColor: selectedProductColor ? selectedProductColor : product.selectedProductColor ? product.selectedProductColor : null,
+                    selectedProductSize: selectedProductSize ? selectedProductSize : product.selectedProductSize ? product.selectedProductSize : null
+                  }))
                 }
                 disabled={productCartQty >= productStock}
               >
                 {" "}
-                Añadir{" "}
+                Add To Cart{" "}
               </button>
             ) : (
-              <button disabled>Sin Existencia</button>
+              <button disabled>Out of Stock</button>
             )}
           </div>
           <div className="pro-details-wishlist">
@@ -219,36 +207,33 @@ const ProductDescriptionInfo = ({
               }
               onClick={() => dispatch(addToWishlist(product))}
             >
-              {wishlistItem !== undefined ? (
-                <i className="fa fa-heart" style={{ color: "#d21425" }} />
-              ) : (
-                <i className="fa fa-heart-o " />
-              )}
+              <i className="pe-7s-like" />
             </button>
           </div>
           <div className="pro-details-compare">
-            <button>
-              <i className="pe-7s-share" />
-            </button>
-          </div>
-          <div className="pro-details-compare">
-            <button>
-              <i className="fa fa-whatsapp" />
+            <button
+              className={compareItem !== undefined ? "active" : ""}
+              disabled={compareItem !== undefined}
+              title={
+                compareItem !== undefined
+                  ? "Added to compare"
+                  : "Add to compare"
+              }
+              onClick={() => dispatch(addToCompare(product))}
+            >
+              <i className="pe-7s-shuffle" />
             </button>
           </div>
         </div>
       )}
       {product.category ? (
         <div className="pro-details-meta">
-          <span className="fw-semibold">Categories :</span>
+          <span>Categories :</span>
           <ul>
             {product.category.map((single, key) => {
               return (
                 <li key={key}>
-                  <Link
-                    to={process.env.PUBLIC_URL + "/shop-grid-standard"}
-                    className="fw-semibold badge rounded-pill text-bg-light"
-                  >
+                  <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
                     {single}
                   </Link>
                 </li>
@@ -261,16 +246,12 @@ const ProductDescriptionInfo = ({
       )}
       {product.tag ? (
         <div className="pro-details-meta">
-          <span className="fw-semibold">Tags :</span>
+          <span>Tags :</span>
           <ul>
             {product.tag.map((single, key) => {
               return (
                 <li key={key}>
-                  <Link
-                    to={process.env.PUBLIC_URL + "/shop-grid-standard"}
-                    className="badge rounded-pill text-bg-light"
-                    style={{ fontSize: "0.75em" }}
-                  >
+                  <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
                     {single}
                   </Link>
                 </li>
@@ -285,13 +266,28 @@ const ProductDescriptionInfo = ({
       <div className="pro-details-social">
         <ul>
           <li>
-            <a href="https://www.facebook.com/Hypestreetstoree?locale=es_LA">
+            <a href="//facebook.com">
               <i className="fa fa-facebook" />
             </a>
           </li>
           <li>
-            <a href="https://www.instagram.com/hypestreetstore/">
-              <i className="fa fa-instagram" />
+            <a href="//dribbble.com">
+              <i className="fa fa-dribbble" />
+            </a>
+          </li>
+          <li>
+            <a href="//pinterest.com">
+              <i className="fa fa-pinterest-p" />
+            </a>
+          </li>
+          <li>
+            <a href="//twitter.com">
+              <i className="fa fa-twitter" />
+            </a>
+          </li>
+          <li>
+            <a href="//linkedin.com">
+              <i className="fa fa-linkedin" />
             </a>
           </li>
         </ul>
@@ -308,7 +304,7 @@ ProductDescriptionInfo.propTypes = {
   finalDiscountedPrice: PropTypes.number,
   finalProductPrice: PropTypes.number,
   product: PropTypes.shape({}),
-  wishlistItem: PropTypes.shape({}),
+  wishlistItem: PropTypes.shape({})
 };
 
 export default ProductDescriptionInfo;

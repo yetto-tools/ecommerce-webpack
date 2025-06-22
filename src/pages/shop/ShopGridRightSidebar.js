@@ -72,7 +72,6 @@ const ShopGridRightSidebar = ({ location }) => {
             <div className="row">
               <div className="col-lg-3 order-2">
                 {/* shop sidebar */}
-                
                 <ShopSidebar
                   products={products}
                   getSortParams={getSortParams}

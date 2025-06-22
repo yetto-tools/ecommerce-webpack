@@ -1,8 +1,6 @@
 /*---- 17. Sidebar style  ------*/
 
 .sidebar-style {
-  height: 86vh; 
-  overflow-y: auto;
   @media #{$lg-layout} {
     &.mr-30 {
       margin-right: 0;
@@ -70,14 +68,13 @@
 
             opacity: 0;
             &:checked ~ .checkmark {
-              border: 2px solid #e6deac;
-              background-color: #e6deac;
+              border: 2px solid #fa6bff;
+              background-color: #fa6bff;
             }
             &:checked ~ .checkmark::after {
               display: block;
             }
           }
-
           .checkmark {
             position: absolute;
             left: 0;

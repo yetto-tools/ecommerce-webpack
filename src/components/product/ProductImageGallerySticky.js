@@ -2,9 +2,6 @@ import PropTypes from "prop-types";
 
 
 const productImageGallerySticky = ({ product }) => {
-
-
-
   return (
     <div className="product-large-image-wrapper product-large-image-wrapper--sticky">
       {product.discount || product.new ? (

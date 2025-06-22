@@ -1,7 +1,3 @@
-// orlando rashon 
-// modificado  2023-12-10
-// correction de moneda, correction de lectura de json estructura
-
 import PropTypes from "prop-types";
 import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
@@ -11,10 +7,7 @@ import { getDiscountPrice } from "../../helpers/product";
 import ProductModal from "./ProductModal";
 import { addToCart } from "../../store/slices/cart-slice";
 import { addToWishlist } from "../../store/slices/wishlist-slice";
-import { useTranslation } from "react-i18next";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { CurrencyFormatter } from "../../helpers/currencyFormatter";
-
+import { addToCompare } from "../../store/slices/compare-slice";
 
 const ProductGridSingleTwo = ({
   product,
@@ -26,7 +19,6 @@ const ProductGridSingleTwo = ({
   colorClass,
   titlePriceClass
 }) => {
-  const {t, i18n} = useTranslation();
   const [modalShow, setModalShow] = useState(false);
   const discountedPrice = getDiscountPrice(product.price, product.discount);
   const finalProductPrice = +(product.price * currency.currencyRate).toFixed(2);
@@ -40,29 +32,16 @@ const ProductGridSingleTwo = ({
       <div className={clsx("product-wrap-2", spaceBottomClass, colorClass)}>
         <div className="product-img">
           <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
-            {/* <img
+            <img
               className="default-img"
-              src={product.image[0].url}
-              alt={product.name}
-              loading="lazy"
-            /> */}
-             <LazyLoadImage
-                className="default-img"
-                alt={''}
-                src={product.image[0].url} // use normal <img> attributes as props
-              />
-            
+              src={process.env.PUBLIC_URL + product.image[0]}
+              alt=""
+            />
             {product.image.length > 1 ? (
-              // <img
-              //   className="hover-img"
-              //   src={product.image[1].url}
-              //   alt=""
-              //   loading="lazy"
-              // />
-              <LazyLoadImage
+              <img
                 className="hover-img"
-                alt={''}
-                src={product.image[1].url} // use normal <img> attributes as props
+                src={process.env.PUBLIC_URL + product.image[1]}
+                alt=""
               />
             ) : (
               ""
@@ -75,7 +54,7 @@ const ProductGridSingleTwo = ({
               ) : (
                 ""
               )}
-              {product.new ? <span className="purple">{t("general_words.new")}</span> : ""}
+              {product.new ? <span className="purple">New</span> : ""}
             </div>
           ) : (
             ""
@@ -97,7 +76,7 @@ const ProductGridSingleTwo = ({
                 to={`${process.env.PUBLIC_URL}/product/${product.id}`}
                 title="Select options"
               >
-                <i className="fa fa-info-circle"></i>
+                <i className="fa fa-cog"></i>
               </Link>
             ) : product.stock && product.stock > 0 ? (
               <button
@@ -125,7 +104,18 @@ const ProductGridSingleTwo = ({
               <i className="fa fa-eye"></i>
             </button>
 
-           
+            <button
+              className={compareItem !== undefined ? "active" : ""}
+              disabled={compareItem !== undefined}
+              title={
+                compareItem !== undefined
+                  ? "Added to compare"
+                  : "Add to compare"
+              }
+              onClick={() => dispatch(addToCompare(product))}
+            >
+              <i className="fa fa-retweet"></i>
+            </button>
           </div>
         </div>
         <div className="product-content-2">
@@ -143,17 +133,14 @@ const ProductGridSingleTwo = ({
               {discountedPrice !== null ? (
                 <Fragment>
                   <span>
-                    
-                    {CurrencyFormatter(finalProductPrice, i18n, currency)}
+                    {currency.currencySymbol + finalDiscountedPrice}
                   </span>{" "}
                   <span className="old">
-                  {CurrencyFormatter(finalProductPrice, i18n, currency)}
+                    {currency.currencySymbol + finalProductPrice}
                   </span>
                 </Fragment>
               ) : (
-                <span>
-                  {CurrencyFormatter(finalProductPrice, i18n, currency)}
-                </span>
+                <span>{currency.currencySymbol + finalProductPrice} </span>
               )}
             </div>
           </div>
@@ -168,11 +155,7 @@ const ProductGridSingleTwo = ({
               }
               onClick={() => dispatch(addToWishlist(product))}
             >
-              {
-                wishlistItem !== undefined 
-                ? <i className="fa fa-heart" style={{color: "#d21425"}}/> 
-                : <i className="pe-7s-like" /> 
-              }
+              <i className="fa fa-heart-o" />
             </button>
           </div>
         </div>

@@ -6,12 +6,8 @@ import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Swiper, { SwiperSlide } from "../../components/swiper";
-import { useTranslation } from "react-i18next";
 
 const ProductImageGallery = ({ product }) => {
-
-  const {t} = useTranslation();
-
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [index, setIndex] = useState(-1);
   const slides = product?.image.map((img, i) => ({
@@ -52,7 +48,7 @@ const ProductImageGallery = ({ product }) => {
             ) : (
               ""
             )}
-            {product.new ? <span className="purple">{t("general_words.new")}</span> : ""}
+            {product.new ? <span className="purple">New</span> : ""}
           </div>
         ) : (
           ""

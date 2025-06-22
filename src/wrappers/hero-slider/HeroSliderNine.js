@@ -5,10 +5,6 @@ import Swiper, { SwiperSlide } from "../../components/swiper";
 import sliderData from "../../data/hero-sliders/hero-slider-nine.json";
 import HeroSliderNineSingle from "../../components/hero-slider/HeroSliderNineSingle.js";
 
-
-
-
-
 const params = {
   effect: "fade",
   fadeEffect: {
@@ -16,18 +12,12 @@ const params = {
   },
   modules: [EffectFade],
   loop: true,
-  autoplay: {
-    delay: 5000,
-    disableOnInteraction: false
-  },
-  
-  speed: 1500,
+  speed: 1000,
   navigation: true,
   autoHeight: false
 };
 
 const HeroSliderNine = ({ spaceLeftClass, spaceRightClass }) => {
-
   return (
     <div className={clsx("slider-area", spaceLeftClass, spaceRightClass)}>
       <div className="slider-active nav-style-1">
@@ -37,7 +27,6 @@ const HeroSliderNine = ({ spaceLeftClass, spaceRightClass }) => {
               <SwiperSlide key={key}>
                 <HeroSliderNineSingle
                   data={single}
-                  sliderClass={''}
                 />
               </SwiperSlide>
             ))}

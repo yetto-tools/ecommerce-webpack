@@ -1,5 +1,4 @@
 import { Fragment } from "react";
-import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getDiscountPrice } from "../../helpers/product";
@@ -8,7 +7,6 @@ import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 
 const Checkout = () => {
-  const { t ,i18n} = useTranslation();
   let cartTotalPrice = 0;
 
   let { pathname } = useLocation();
@@ -35,41 +33,45 @@ const Checkout = () => {
               <div className="row">
                 <div className="col-lg-7">
                   <div className="billing-info-wrap">
-                    <h3>{t("page_checkout.billing_details")}</h3>
+                    <h3>Billing Details</h3>
                     <div className="row">
                       <div className="col-lg-6 col-md-6">
                         <div className="billing-info mb-20">
-                          <label>{t("page_checkout.first_name")}</label>
+                          <label>First Name</label>
                           <input type="text" />
                         </div>
                       </div>
                       <div className="col-lg-6 col-md-6">
                         <div className="billing-info mb-20">
-                          <label>{t("page_checkout.last_name")}</label>
+                          <label>Last Name</label>
                           <input type="text" />
                         </div>
                       </div>
                       <div className="col-lg-12">
                         <div className="billing-info mb-20">
-                          <label>{t("page_checkout.company_name")}</label>
+                          <label>Company Name</label>
                           <input type="text" />
                         </div>
                       </div>
                       <div className="col-lg-12">
                         <div className="billing-select mb-20">
-                          <label>{t("page_checkout.country")}</label>
+                          <label>Country</label>
                           <select>
-                            <option>{t("page_checkout.select_country")}</option>
-                            <option>Guatemala</option>
+                            <option>Select a country</option>
+                            <option>Azerbaijan</option>
+                            <option>Bahamas</option>
+                            <option>Bahrain</option>
+                            <option>Bangladesh</option>
+                            <option>Barbados</option>
                           </select>
                         </div>
                       </div>
                       <div className="col-lg-12">
                         <div className="billing-info mb-20">
-                          <label>{t("page_checkout.street_address")}</label>
+                          <label>Street Address</label>
                           <input
                             className="billing-address"
-                            placeholder={t("page_checkout.street")}
+                            placeholder="House number and street name"
                             type="text"
                           />
                           <input
@@ -80,40 +82,40 @@ const Checkout = () => {
                       </div>
                       <div className="col-lg-12">
                         <div className="billing-info mb-20">
-                          <label>{t("page_checkout.city")}</label>
+                          <label>Town / City</label>
                           <input type="text" />
                         </div>
                       </div>
                       <div className="col-lg-6 col-md-6">
                         <div className="billing-info mb-20">
-                          <label>{t("page_checkout.state_county")}</label>
+                          <label>State / County</label>
                           <input type="text" />
                         </div>
                       </div>
                       <div className="col-lg-6 col-md-6">
                         <div className="billing-info mb-20">
-                          <label>{t("page_checkout.phone1")}</label>
+                          <label>Postcode / ZIP</label>
                           <input type="text" />
                         </div>
                       </div>
                       <div className="col-lg-6 col-md-6">
                         <div className="billing-info mb-20">
-                          <label>{t("page_checkout.phone2")}</label>
+                          <label>Phone</label>
                           <input type="text" />
                         </div>
                       </div>
                       <div className="col-lg-6 col-md-6">
                         <div className="billing-info mb-20">
-                          <label>{t("page_checkout.email_address")}</label>
+                          <label>Email Address</label>
                           <input type="text" />
                         </div>
                       </div>
                     </div>
 
                     <div className="additional-info-wrap">
-                      <h4>{t("page_checkout.additional_information")}</h4>
+                      <h4>Additional information</h4>
                       <div className="additional-info">
-                        <label>{t("page_checkout.order_notes")}</label>
+                        <label>Order notes</label>
                         <textarea
                           placeholder="Notes about your order, e.g. special notes for delivery. "
                           name="message"
@@ -126,12 +128,12 @@ const Checkout = () => {
 
                 <div className="col-lg-5">
                   <div className="your-order-area">
-                    <h3>{t("page_checkout.your_order")}</h3>
+                    <h3>Your order</h3>
                     <div className="your-order-wrap gray-bg-4">
                       <div className="your-order-product-info">
                         <div className="your-order-top">
                           <ul>
-                            <li>{t("page_checkout.product")}</li>
+                            <li>Product</li>
                             <li>Total</li>
                           </ul>
                         </div>
@@ -161,14 +163,15 @@ const Checkout = () => {
                                   </span>{" "}
                                   <span className="order-price">
                                     {discountedPrice !== null
-                                      ? 
-                                      new Intl.NumberFormat(i18n.language, {style: "currency", currency: currency.currencyName}).format(finalDiscountedPrice *
-                                        cartItem.quantity)
-                                      
-                                      
-                                      : 
-                                      new Intl.NumberFormat(i18n.language, {style: "currency", currency: currency.currencyName}).format(finalProductPrice * cartItem.quantity)
-                                    }
+                                      ? currency.currencySymbol +
+                                        (
+                                          finalDiscountedPrice *
+                                          cartItem.quantity
+                                        ).toFixed(2)
+                                      : currency.currencySymbol +
+                                        (
+                                          finalProductPrice * cartItem.quantity
+                                        ).toFixed(2)}
                                   </span>
                                 </li>
                               );
@@ -177,19 +180,16 @@ const Checkout = () => {
                         </div>
                         <div className="your-order-bottom">
                           <ul>
-                            <li className="your-order-shipping">{t("page_checkout.shipping")}</li>
-                            <li>{t("page_checkout.free_shipping")}</li>
+                            <li className="your-order-shipping">Shipping</li>
+                            <li>Free shipping</li>
                           </ul>
                         </div>
                         <div className="your-order-total">
                           <ul>
                             <li className="order-total">Total</li>
                             <li>
-                              {
-                                new Intl.NumberFormat(i18n.language, {style: "currency", currency: currency.currencyName}).format(cartTotalPrice)
-                              }
-
-                                
+                              {currency.currencySymbol +
+                                cartTotalPrice.toFixed(2)}
                             </li>
                           </ul>
                         </div>
@@ -197,7 +197,7 @@ const Checkout = () => {
                       <div className="payment-method"></div>
                     </div>
                     <div className="place-order mt-25">
-                      <button className="btn-hover">{t("page_checkout.place_order")}</button>
+                      <button className="btn-hover">Place Order</button>
                     </div>
                   </div>
                 </div>
@@ -210,10 +210,8 @@ const Checkout = () => {
                       <i className="pe-7s-cash"></i>
                     </div>
                     <div className="item-empty-area__text">
-                    {t("page_checkout.select_country")}
                       No items found in cart to checkout <br />{" "}
                       <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
-                      {t("page_checkout.select_country")}
                         Shop Now
                       </Link>
                     </div>

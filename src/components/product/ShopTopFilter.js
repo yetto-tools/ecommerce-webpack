@@ -7,12 +7,8 @@ import {
   getProductsIndividualSizes,
   setActiveSort
 } from "../../helpers/product";
-import { useTranslation } from "react-i18next";
 
 const ShopTopFilter = ({ products, getSortParams }) => {
-
-  const {t} = useTranslation();
-
   const uniqueCategories = getIndividualCategories(products);
   const uniqueColors = getIndividualColors(products);
   const uniqueSizes = getProductsIndividualSizes(products);
@@ -78,7 +74,7 @@ const ShopTopFilter = ({ products, getSortParams }) => {
           {/* Product Filter */}
           <div className="col-md-3 col-sm-6 col-xs-12 mb-30">
             <div className="product-filter">
-              <h5>{t("general_words.size")}</h5>
+              <h5>Size</h5>
               {uniqueSizes ? (
                 <ul>
                   {uniqueSizes.map((size, key) => {

@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import SEO from "../../components/seo";
+import LayoutTen from "../../layouts/LayoutTen";
 import HeroSliderThirtyFour from "../../wrappers/hero-slider/HeroSliderThirtyFour";
 import BannerThirtyFour from "../../wrappers/banner/BannerThirtyFour";
 import TabProductTwentyOne from "../../wrappers/product/TabProductTwentyOne";
@@ -8,7 +9,6 @@ import NewsletterThree from "../../wrappers/newsletter/NewsletterThree";
 import TestimonialOne from "../../wrappers/testimonial/TestimonialOne";
 import BannerThirtyThree from "../../wrappers/banner/BannerThirtyThree";
 import CountDownSeven from "../../wrappers/countdown/CountDownSeven";
-import LayoutOne from "../../layouts/LayoutOne";
 
 const HomeBlackFriday = () => {
   return (
@@ -17,7 +17,7 @@ const HomeBlackFriday = () => {
         titleTemplate="Black friday Home"
         description="Black friday home of flone react minimalist eCommerce template."
       />
-      <LayoutOne>
+      <LayoutTen>
         {/* hero slider */}
         <HeroSliderThirtyFour />
         {/* countdown */}
@@ -61,7 +61,7 @@ const HomeBlackFriday = () => {
           bgColorClass="bg-black-2"
           testimonialClass="single-testimonial-2"
         />
-      </LayoutOne>
+      </LayoutTen>
     </Fragment>
   );
 };

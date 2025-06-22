@@ -7,7 +7,6 @@ import Rating from "./sub-components/ProductRating";
 import { addToCart } from "../../store/slices/cart-slice";
 import { addToWishlist } from "../../store/slices/wishlist-slice";
 import { addToCompare } from "../../store/slices/compare-slice";
-import { useTranslation } from "react-i18next";
 
 const ProductDescriptionInfoSlider = ({
   product,
@@ -19,7 +18,6 @@ const ProductDescriptionInfoSlider = ({
   wishlistItem,
   compareItem,
 }) => {
-  const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
   const [selectedProductColor, setSelectedProductColor] = useState(
     product.variation ? product.variation[0].color : ""
@@ -47,19 +45,11 @@ const ProductDescriptionInfoSlider = ({
           <Fragment>
             <span>{currency.currencySymbol + finalDiscountedPrice}</span>{" "}
             <span className="old">
-              {new Intl.NumberFormat(i18n.language, {
-                style: "currency",
-                currency: currency.currencyName,
-              }).format(finalProductPrice)}
+              {currency.currencySymbol + finalProductPrice}
             </span>
           </Fragment>
         ) : (
-          <span>
-            {new Intl.NumberFormat(i18n.language, {
-              style: "currency",
-              currency: currency.currencyName,
-            }).format(finalProductPrice)}
-          </span>
+          <span>{currency.currencySymbol + finalProductPrice} </span>
         )}
       </div>
       {product.rating && product.rating > 0 ? (
@@ -107,10 +97,10 @@ const ProductDescriptionInfoSlider = ({
             </div>
           </div>
           <div className="pro-details-size">
-            <span>{t("general_words.size")}</span>
+            <span>Size</span>
             <div className="pro-details-size-content">
               {product.variation &&
-                product.variation.map((single) => {
+                product.variation.map(single => {
                   return single.color === selectedProductColor
                     ? single.size.map((singleSize, key) => {
                         return (
@@ -190,33 +180,23 @@ const ProductDescriptionInfoSlider = ({
             {productStock && productStock > 0 ? (
               <button
                 onClick={() =>
-                  dispatch(
-                    addToCart({
-                      ...product,
-                      quantity: quantityCount,
-                      selectedProductColor: selectedProductColor
-                        ? selectedProductColor
-                        : product.selectedProductColor
-                        ? product.selectedProductColor
-                        : null,
-                      selectedProductSize: selectedProductSize
-                        ? selectedProductSize
-                        : product.selectedProductSize
-                        ? product.selectedProductSize
-                        : null,
-                    })
-                  )
+                  dispatch(addToCart({
+                    ...product,
+                    quantity: quantityCount,
+                    selectedProductColor: selectedProductColor ? selectedProductColor : product.selectedProductColor ? product.selectedProductColor : null,
+                    selectedProductSize: selectedProductSize ? selectedProductSize : product.selectedProductSize ? product.selectedProductSize : null
+                  }))
                 }
                 disabled={productCartQty >= productStock}
               >
                 {" "}
-                Añadir{" "}
+                Add To Cart{" "}
               </button>
             ) : (
               <button disabled>Out of Stock</button>
             )}
           </div>
-          {/* <div className="pro-details-wishlist">
+          <div className="pro-details-wishlist">
             <button
               className={wishlistItem !== undefined ? "active" : ""}
               disabled={wishlistItem !== undefined}
@@ -243,7 +223,7 @@ const ProductDescriptionInfoSlider = ({
             >
               <i className="pe-7s-shuffle" />
             </button>
-          </div> */}
+          </div>
         </div>
       )}
       {product.category ? (
@@ -286,7 +266,7 @@ const ProductDescriptionInfoSlider = ({
       <div className="pro-details-social">
         <ul className="justify-content-center">
           <li>
-            <a href="https://www.facebook.com/Hypestreetstoree?locale=es_LA">
+            <a href="//facebook.com">
               <i className="fa fa-facebook" />
             </a>
           </li>
@@ -324,7 +304,7 @@ ProductDescriptionInfoSlider.propTypes = {
   finalDiscountedPrice: PropTypes.number,
   finalProductPrice: PropTypes.number,
   product: PropTypes.shape({}),
-  wishlistItem: PropTypes.shape({}),
+  wishlistItem: PropTypes.shape({})
 };
 
 export default ProductDescriptionInfoSlider;

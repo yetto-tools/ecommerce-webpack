@@ -7,16 +7,12 @@ import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Swiper, { SwiperSlide } from "../../components/swiper";
-import { useTranslation } from "react-i18next";
 
 const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
-  
-  const {t} = useTranslation();
-  
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [index, setIndex] = useState(-1);
   const slides = product?.image.map((img, i) => ({
-      src: process.env.PUBLIC_URL + img.url,
+      src: process.env.PUBLIC_URL + img,
       key: i,
   }));
 
@@ -80,7 +76,7 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
                 ) : (
                   ""
                 )}
-                {product.new ? <span className="purple">{t("general_words.new")}</span> : ""}
+                {product.new ? <span className="purple">New</span> : ""}
               </div>
             ) : (
               ""
@@ -94,7 +90,7 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
                     </button>
                     <div className="single-image">
                       <img
-                        src={process.env.PUBLIC_URL + single.url}
+                        src={process.env.PUBLIC_URL + single}
                         className="img-fluid"
                         alt=""
                       />
@@ -124,7 +120,7 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
                   <SwiperSlide key={key}>
                     <div className="single-image">
                       <img
-                        src={process.env.PUBLIC_URL + single.url}
+                        src={process.env.PUBLIC_URL + single}
                         className="img-fluid"
                         alt=""
                       />

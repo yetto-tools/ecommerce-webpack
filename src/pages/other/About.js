@@ -16,7 +16,7 @@ const About = () => {
   return (
     <Fragment>
       <SEO
-        titleTemplate="Acerca de Nosotros"
+        titleTemplate="About us"
         description="About page of flone react minimalist eCommerce template."
       /> 
       <LayoutOne headerTop="visible">

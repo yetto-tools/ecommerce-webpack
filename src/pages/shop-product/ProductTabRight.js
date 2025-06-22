@@ -18,7 +18,7 @@ const ProductTabRight = () => {
     <Fragment>
       <SEO
         titleTemplate="Product Page"
-        description="Productos New Era"
+        description="Product page of flone react minimalist eCommerce template."
       />
 
       <LayoutOne headerTop="visible">

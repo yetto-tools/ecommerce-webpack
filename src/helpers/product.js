@@ -2,22 +2,12 @@
 export const getProducts = (products, category, type, limit) => {
   const finalProducts = category
     ? products.filter(
-        (product) =>
-          product.category.filter((single) => single.name === category)[0]
+        product => product.category.filter(single => single === category)[0]
       )
     : products;
-  console.log(products);
-  console.log(
-    products.filter(
-      (product) =>
-        product.category.filter((single) => {
-          console.log(category, single.name);
-          return single.name === category;
-        })[0]
-    )
-  );
+
   if (type && type === "new") {
-    const newProducts = finalProducts.filter((single) => single.new);
+    const newProducts = finalProducts.filter(single => single.new);
     return newProducts.slice(0, limit ? limit : newProducts.length);
   }
   if (type && type === "bestSeller") {
@@ -29,7 +19,7 @@ export const getProducts = (products, category, type, limit) => {
   }
   if (type && type === "saleItems") {
     const saleItems = finalProducts.filter(
-      (single) => single.discount && single.discount > 0
+      single => single.discount && single.discount > 0
     );
     return saleItems.slice(0, limit ? limit : saleItems.length);
   }
@@ -38,55 +28,33 @@ export const getProducts = (products, category, type, limit) => {
 
 // get product discount price
 export const getDiscountPrice = (price, discount) => {
-  console.log(price);
   return discount && discount > 0 ? price - price * (discount / 100) : null;
 };
 
 // get product cart quantity
 export const getProductCartQuantity = (cartItems, product, color, size) => {
   let productInCart = cartItems.find(
-    (single) =>
+    single =>
       single.id === product.id &&
       (single.selectedProductColor
         ? single.selectedProductColor === color
         : true) &&
       (single.selectedProductSize ? single.selectedProductSize === size : true)
   );
-
   if (cartItems.length >= 1 && productInCart) {
-    // Corrección: Verificar si se encuentra una coincidencia exacta antes de acceder a la propiedad 'quantity'
-    const exactMatch = cartItems.find(
-      (single) =>
-        single.id === product.id &&
-        single.selectedProductColor === color &&
-        single.selectedProductSize === size
-    );
-    console.log(productInCart);
-
     if (product.variation) {
-      // Corrección: Asegurarse de que 'exactMatch' no es undefined
-      return exactMatch ? exactMatch.quantity : 0;
+      return cartItems.find(
+        single =>
+          single.id === product.id &&
+          single.selectedProductColor === color &&
+          single.selectedProductSize === size
+      ).quantity;
     } else {
-      // Corrección: Asegurarse de que 'productInCart' no es undefined
-      return productInCart ? productInCart.quantity : 0;
+      return cartItems.find(single => product.id === single.id).quantity;
     }
   } else {
     return 0;
   }
-  // if (cartItems.length >= 1 && productInCart) {
-  //   if (product.variation) {
-  //     return cartItems.find(
-  //       single =>
-  //         single.id === product.id &&
-  //         single.selectedProductColor === color &&
-  //         single.selectedProductSize === size
-  //     ).quantity;
-  //   } else {
-  //     return cartItems.find(single => product.id === single.id).quantity;
-  //   }
-  // } else {
-  //   return 0;
-  // }
 };
 
 export const cartItemStock = (item, color, size) => {
@@ -94,8 +62,8 @@ export const cartItemStock = (item, color, size) => {
     return item.stock;
   } else {
     return item.variation
-      .filter((single) => single.color === color)[0]
-      .size.filter((single) => single.name === size)[0].stock;
+      .filter(single => single.color === color)[0]
+      .size.filter(single => single.name === size)[0].stock;
   }
 };
 
@@ -104,38 +72,27 @@ export const getSortedProducts = (products, sortType, sortValue) => {
   if (products && sortType && sortValue) {
     if (sortType === "category") {
       return products.filter(
-        (product) =>
-          product.category.filter((single) => single.name === sortValue)[0]
+        product => product.category.filter(single => single === sortValue)[0]
       );
     }
     if (sortType === "tag") {
       return products.filter(
-        (product) =>
-          product.tag.filter((single) => single.name === sortValue)[0]
+        product => product.tag.filter(single => single === sortValue)[0]
       );
     }
     if (sortType === "color") {
       return products.filter(
-        (product) =>
+        product =>
           product.variation &&
-          product.variation.filter(
-            (single) => single.color.name === sortValue
-          )[0]
-      );
-    }
-    if (sortType === "silueta") {
-      return products.filter(
-        (product) =>
-          product.silueta.filter((single) => single.name === sortValue)[0]
+          product.variation.filter(single => single.color === sortValue)[0]
       );
     }
     if (sortType === "size") {
       return products.filter(
-        (product) =>
+        product =>
           product.variation &&
           product.variation.filter(
-            (single) =>
-              single.size.filter((single) => single.name === sortValue)[0]
+            single => single.size.filter(single => single.name === sortValue)[0]
           )[0]
       );
     }
@@ -160,21 +117,21 @@ export const getSortedProducts = (products, sortType, sortValue) => {
 };
 
 // get individual element
-const getIndividualItemArray = (array) => {
-  let individualItemArray = array.filter(function (v, i, self) {
+const getIndividualItemArray = array => {
+  let individualItemArray = array.filter(function(v, i, self) {
     return i === self.indexOf(v);
   });
   return individualItemArray;
 };
 
 // get individual categories
-export const getIndividualCategories = (products) => {
+export const getIndividualCategories = products => {
   let productCategories = [];
   products &&
-    products.map((product) => {
+    products.map(product => {
       return (
         product.category &&
-        product.category.map((single) => {
+        product.category.map(single => {
           return productCategories.push(single);
         })
       );
@@ -184,13 +141,13 @@ export const getIndividualCategories = (products) => {
 };
 
 // get individual tags
-export const getIndividualTags = (products) => {
+export const getIndividualTags = products => {
   let productTags = [];
   products &&
-    products.map((product) => {
+    products.map(product => {
       return (
         product.tag &&
-        product.tag.map((single) => {
+        product.tag.map(single => {
           return productTags.push(single);
         })
       );
@@ -199,31 +156,14 @@ export const getIndividualTags = (products) => {
   return individualProductTags;
 };
 
-// get individual Silueta
-export const getIndividualSilueta = (products) => {
-  let productSilueta = [];
-  products &&
-    products.map((product) => {
-      return (
-        product.silueta &&
-        product.silueta.map((single) => {
-          return productSilueta.push(single);
-        })
-      );
-    });
-  const individualProductSilueta = getIndividualItemArray(productSilueta);
-  console.log(individualProductSilueta);
-  return individualProductSilueta;
-};
-
 // get individual colors
-export const getIndividualColors = (products) => {
+export const getIndividualColors = products => {
   let productColors = [];
   products &&
-    products.map((product) => {
+    products.map(product => {
       return (
         product.variation &&
-        product.variation.map((single) => {
+        product.variation.map(single => {
           return productColors.push(single.color);
         })
       );
@@ -232,45 +172,32 @@ export const getIndividualColors = (products) => {
   return individualProductColors;
 };
 
-// // get individual sizes
-// export const getProductsIndividualSizes = products => {
-//   let productSizes = [];
-//   products &&
-//     products.map(product => {
-//       return (
-//         product.variation &&
-//         product.variation.map(single => {
-//           return single.size.map(single => {
-//             return productSizes.push(single.name);
-//           });
-//         })
-//       );
-//     });
-//   const individualProductSizes = getIndividualItemArray(productSizes);
-//   return individualProductSizes;
-// };
-export const getProductsIndividualSizes = (products) => {
-  const productSizes = new Set();
-
-  products.forEach((product) => {
-    product.variation?.forEach((variation) => {
-      variation.size.forEach((size) => {
-        productSizes.add(size.name);
-      });
+// get individual sizes
+export const getProductsIndividualSizes = products => {
+  let productSizes = [];
+  products &&
+    products.map(product => {
+      return (
+        product.variation &&
+        product.variation.map(single => {
+          return single.size.map(single => {
+            return productSizes.push(single.name);
+          });
+        })
+      );
     });
-  });
-
-  return Array.from(productSizes);
+  const individualProductSizes = getIndividualItemArray(productSizes);
+  return individualProductSizes;
 };
 
 // get product individual sizes
-export const getIndividualSizes = (product) => {
+export const getIndividualSizes = product => {
   let productSizes = [];
   product.variation &&
-    product.variation.map((singleVariation) => {
+    product.variation.map(singleVariation => {
       return (
         singleVariation.size &&
-        singleVariation.size.map((singleSize) => {
+        singleVariation.size.map(singleSize => {
           return productSizes.push(singleSize.name);
         })
       );
@@ -279,25 +206,25 @@ export const getIndividualSizes = (product) => {
   return individualSizes;
 };
 
-export const setActiveSort = (e) => {
+export const setActiveSort = e => {
   const filterButtons = document.querySelectorAll(
     ".sidebar-widget-list-left button, .sidebar-widget-tag button, .product-filter button"
   );
-  filterButtons.forEach((item) => {
+  filterButtons.forEach(item => {
     item.classList.remove("active");
   });
   e.currentTarget.classList.add("active");
 };
 
-export const setActiveLayout = (e) => {
+export const setActiveLayout = e => {
   const gridSwitchBtn = document.querySelectorAll(".shop-tab button");
-  gridSwitchBtn.forEach((item) => {
+  gridSwitchBtn.forEach(item => {
     item.classList.remove("active");
   });
   e.currentTarget.classList.add("active");
 };
 
-export const toggleShopTopFilter = (e) => {
+export const toggleShopTopFilter = e => {
   const shopTopFilterWrapper = document.querySelector(
     "#product-filter-wrapper"
   );

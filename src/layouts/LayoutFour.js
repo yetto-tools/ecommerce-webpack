@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 import HeaderThree from "../wrappers/header/HeaderThree";
-import FooterOne from "../wrappers/footer/FooterOne";
+import FooterThree from "../wrappers/footer/FooterThree";
 import ScrollToTop from "../components/scroll-to-top"
 
 const LayoutFour = ({ children }) => {
@@ -9,7 +9,7 @@ const LayoutFour = ({ children }) => {
     <Fragment>
       <HeaderThree />
       {children}
-      <FooterOne spaceBottomClass="pb-70" />
+      <FooterThree spaceBottomClass="pb-70" />
       <ScrollToTop/>
     </Fragment>
   );

@@ -1,13 +1,8 @@
 import PropTypes from "prop-types";
 
 import { setActiveSort } from "../../helpers/product";
-import { useTranslation } from "react-i18next";
-
 
 const ShopColor = ({ colors, getSortParams }) => {
-
-  const {t} = useTranslation()
-
   return (
     <div className="sidebar-widget mt-50">
       <h4 className="pro-sidebar-title">Color </h4>
@@ -22,7 +17,7 @@ const ShopColor = ({ colors, getSortParams }) => {
                     setActiveSort(e);
                   }}
                 >
-                  <span className="checkmark" /> {t("general_words.all_colors")}{" "}
+                  <span className="checkmark" /> All Colors{" "}
                 </button>
               </div>
             </li>
@@ -36,9 +31,7 @@ const ShopColor = ({ colors, getSortParams }) => {
                         setActiveSort(e);
                       }}
                     >
-                      {/* <span className={`bg-${color} p-2 rounded-circle`}/> */}
-                      <span className="checkmark" /> {t(`general_words.${color}`)}{" "}
-
+                      <span className="checkmark" /> {color}{" "}
                     </button>
                   </div>
                 </li>
@@ -46,7 +39,7 @@ const ShopColor = ({ colors, getSortParams }) => {
             })}
           </ul>
         ) : (
-          t("general_words.no_colors_found")
+          "No colors found"
         )}
       </div>
     </div>

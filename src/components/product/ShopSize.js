@@ -1,15 +1,11 @@
 import PropTypes from "prop-types";
 
 import { setActiveSort } from "../../helpers/product";
-import { useTranslation } from "react-i18next";
 
 const ShopSize = ({ sizes, getSortParams }) => {
-  
-  const {t} = useTranslation();
-  
   return (
     <div className="sidebar-widget mt-40">
-      <h4 className="pro-sidebar-title">{t("general_words.size")}</h4>
+      <h4 className="pro-sidebar-title">Size </h4>
       <div className="sidebar-widget-list mt-20">
         {sizes ? (
           <ul>
@@ -21,7 +17,7 @@ const ShopSize = ({ sizes, getSortParams }) => {
                     setActiveSort(e);
                   }}
                 >
-                  <span className="checkmark" /> {t("general_words.all_size")}{" "}
+                  <span className="checkmark" /> All Sizes{" "}
                 </button>
               </div>
             </li>

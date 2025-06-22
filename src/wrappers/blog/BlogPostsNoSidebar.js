@@ -44,10 +44,7 @@ const BlogPostsNoSidebar = () => {
                 <div className="share-social">
                   <ul>
                     <li>
-                      <a
-                        className="facebook"
-                        href="https://www.facebook.com/Hypestreetstoree?locale=es_LA"
-                      >
+                      <a className="facebook" href="//facebook.com">
                         <i className="fa fa-facebook" />
                       </a>
                     </li>
@@ -57,10 +54,7 @@ const BlogPostsNoSidebar = () => {
                       </a>
                     </li>
                     <li>
-                      <a
-                        className="instagram"
-                        href="https://www.instagram.com/hypestreetstore/"
-                      >
+                      <a className="instagram" href="//instagram.com">
                         <i className="fa fa-instagram" />
                       </a>
                     </li>
@@ -112,10 +106,7 @@ const BlogPostsNoSidebar = () => {
                 <div className="share-social">
                   <ul>
                     <li>
-                      <a
-                        className="facebook"
-                        href="https://www.facebook.com/Hypestreetstoree?locale=es_LA"
-                      >
+                      <a className="facebook" href="//facebook.com">
                         <i className="fa fa-facebook" />
                       </a>
                     </li>
@@ -125,10 +116,7 @@ const BlogPostsNoSidebar = () => {
                       </a>
                     </li>
                     <li>
-                      <a
-                        className="instagram"
-                        href="https://www.instagram.com/hypestreetstore/"
-                      >
+                      <a className="instagram" href="//instagram.com">
                         <i className="fa fa-instagram" />
                       </a>
                     </li>
@@ -180,10 +168,7 @@ const BlogPostsNoSidebar = () => {
                 <div className="share-social">
                   <ul>
                     <li>
-                      <a
-                        className="facebook"
-                        href="https://www.facebook.com/Hypestreetstoree?locale=es_LA"
-                      >
+                      <a className="facebook" href="//facebook.com">
                         <i className="fa fa-facebook" />
                       </a>
                     </li>
@@ -193,10 +178,7 @@ const BlogPostsNoSidebar = () => {
                       </a>
                     </li>
                     <li>
-                      <a
-                        className="instagram"
-                        href="https://www.instagram.com/hypestreetstore/"
-                      >
+                      <a className="instagram" href="//instagram.com">
                         <i className="fa fa-instagram" />
                       </a>
                     </li>
@@ -248,10 +230,7 @@ const BlogPostsNoSidebar = () => {
                 <div className="share-social">
                   <ul>
                     <li>
-                      <a
-                        className="facebook"
-                        href="https://www.facebook.com/Hypestreetstoree?locale=es_LA"
-                      >
+                      <a className="facebook" href="//facebook.com">
                         <i className="fa fa-facebook" />
                       </a>
                     </li>
@@ -261,10 +240,7 @@ const BlogPostsNoSidebar = () => {
                       </a>
                     </li>
                     <li>
-                      <a
-                        className="instagram"
-                        href="https://www.instagram.com/hypestreetstore/"
-                      >
+                      <a className="instagram" href="//instagram.com">
                         <i className="fa fa-instagram" />
                       </a>
                     </li>
@@ -316,10 +292,7 @@ const BlogPostsNoSidebar = () => {
                 <div className="share-social">
                   <ul>
                     <li>
-                      <a
-                        className="facebook"
-                        href="https://www.facebook.com/Hypestreetstoree?locale=es_LA"
-                      >
+                      <a className="facebook" href="//facebook.com">
                         <i className="fa fa-facebook" />
                       </a>
                     </li>
@@ -329,10 +302,7 @@ const BlogPostsNoSidebar = () => {
                       </a>
                     </li>
                     <li>
-                      <a
-                        className="instagram"
-                        href="https://www.instagram.com/hypestreetstore/"
-                      >
+                      <a className="instagram" href="//instagram.com">
                         <i className="fa fa-instagram" />
                       </a>
                     </li>
@@ -384,10 +354,7 @@ const BlogPostsNoSidebar = () => {
                 <div className="share-social">
                   <ul>
                     <li>
-                      <a
-                        className="facebook"
-                        href="https://www.facebook.com/Hypestreetstoree?locale=es_LA"
-                      >
+                      <a className="facebook" href="//facebook.com">
                         <i className="fa fa-facebook" />
                       </a>
                     </li>
@@ -397,10 +364,7 @@ const BlogPostsNoSidebar = () => {
                       </a>
                     </li>
                     <li>
-                      <a
-                        className="instagram"
-                        href="https://www.instagram.com/hypestreetstore/"
-                      >
+                      <a className="instagram" href="//instagram.com">
                         <i className="fa fa-instagram" />
                       </a>
                     </li>

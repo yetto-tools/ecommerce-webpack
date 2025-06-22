@@ -1,14 +1,12 @@
-import { Fragment } from "react";
+import { Fragment } from "react"; 
 import { useLocation } from "react-router-dom";
 import SEO from "../../components/seo";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
-import GoogleMap from "../../components/google-map";
-import { useTranslation } from "react-i18next";
+import GoogleMap from "../../components/google-map"
 
 const Contact = () => {
   let { pathname } = useLocation();
-  const { t } = useTranslation();
 
   return (
     <Fragment>
@@ -18,11 +16,11 @@ const Contact = () => {
       />
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
-        <Breadcrumb
+        <Breadcrumb 
           pages={[
-            { label: "Home", path: process.env.PUBLIC_URL + "/" },
-            { label: "Contact", path: process.env.PUBLIC_URL + pathname },
-          ]}
+            {label: "Home", path: process.env.PUBLIC_URL + "/" },
+            {label: "Contact", path: process.env.PUBLIC_URL + pathname }
+          ]} 
         />
         <div className="contact-area pt-100 pb-100">
           <div className="container">
@@ -68,10 +66,10 @@ const Contact = () => {
                     </div>
                   </div>
                   <div className="contact-social text-center">
-                    <h3>{t("follow_us")}</h3>
+                    <h3>Follow Us</h3>
                     <ul>
                       <li>
-                        <a href="https://www.facebook.com/Hypestreetstoree?locale=es_LA">
+                        <a href="//facebook.com">
                           <i className="fa fa-facebook" />
                         </a>
                       </li>

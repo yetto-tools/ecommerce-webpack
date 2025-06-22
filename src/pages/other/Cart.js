@@ -5,55 +5,56 @@ import SEO from "../../components/seo";
 import { getDiscountPrice } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
-import { addToCart, decreaseQuantity, deleteFromCart, deleteAllFromCart } from "../../store/slices/cart-slice";
+import {
+  addToCart,
+  decreaseQuantity,
+  deleteFromCart,
+  deleteAllFromCart,
+} from "../../store/slices/cart-slice";
 import { cartItemStock } from "../../helpers/product";
-import { useTranslation } from "react-i18next";
 
 const Cart = () => {
-
-  const {t, i18n} = useTranslation();
-
   let cartTotalPrice = 0;
 
   const [quantityCount] = useState(1);
   const dispatch = useDispatch();
   let { pathname } = useLocation();
-  
+
   const currency = useSelector((state) => state.currency);
   const { cartItems } = useSelector((state) => state.cart);
 
   return (
     <Fragment>
       <SEO
-        titleTemplate={t("seo.title")}
-        description={t("seo.cart")}
+        titleTemplate="Cart"
+        description="Cart page of flone react minimalist eCommerce template."
       />
 
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
-        <Breadcrumb 
+        <Breadcrumb
           pages={[
-            {label: t("page_cart.label_home"), path: process.env.PUBLIC_URL + "/" },
-            {label: t("page_cart.label_Cart"), path: process.env.PUBLIC_URL + pathname }
-          ]} 
+            { label: "Home", path: process.env.PUBLIC_URL + "/" },
+            { label: "Cart", path: process.env.PUBLIC_URL + pathname },
+          ]}
         />
         <div className="cart-main-area pt-90 pb-100">
           <div className="container">
             {cartItems && cartItems.length >= 1 ? (
               <Fragment>
-                <h3 className="cart-page-title">{t("page_cart.cart_page_title")}</h3>
+                <h3 className="cart-page-title">Your cart items</h3>
                 <div className="row">
                   <div className="col-12">
                     <div className="table-content table-responsive cart-table-content">
-                      <table>
+                      {/* <table>
                         <thead>
                           <tr>
-                            <th>{t("page_cart.th_image")}</th>
-                            <th>{t("page_cart.th_product_name")}</th>
-                            <th>{t("page_cart.th_unit_price")}</th>
-                            <th>{t("page_cart.th_qty")}</th>
-                            <th>{t("page_cart.th_subtotal")}</th>
-                            <th>{t("page_cart.th_action")}</th>
+                            <th>Image</th>
+                            <th>Product Name</th>
+                            <th>Unit Price</th>
+                            <th>Qty</th>
+                            <th>Subtotal</th>
+                            <th>action</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -109,10 +110,10 @@ const Cart = () => {
                                   cartItem.selectedProductSize ? (
                                     <div className="cart-item-variation">
                                       <span>
-                                      {t("page_cart.cart_color")}: {cartItem.selectedProductColor}
+                                        Color: {cartItem.selectedProductColor}
                                       </span>
                                       <span>
-                                       {t("page_cart.cart_size")}: {cartItem.selectedProductSize}
+                                        Size: {cartItem.selectedProductSize}
                                       </span>
                                     </div>
                                   ) : (
@@ -124,15 +125,18 @@ const Cart = () => {
                                   {discountedPrice !== null ? (
                                     <Fragment>
                                       <span className="amount old">
-                                          {new Intl.NumberFormat(i18n.language, {style: "currency", currency: currency.currencyName}).format(finalProductPrice)}    
+                                        {currency.currencySymbol +
+                                          finalProductPrice}
                                       </span>
                                       <span className="amount">
-                                        {new Intl.NumberFormat(i18n.language, {style: "currency", currency: currency.currencyName}).format(finalDiscountedPrice)}    
+                                        {currency.currencySymbol +
+                                          finalDiscountedPrice}
                                       </span>
                                     </Fragment>
                                   ) : (
                                     <span className="amount">
-                                      {new Intl.NumberFormat(i18n.language, {style: "currency", currency: currency.currencyName}).format(finalProductPrice)}
+                                      {currency.currencySymbol +
+                                        finalProductPrice}
                                     </span>
                                   )}
                                 </td>
@@ -156,10 +160,12 @@ const Cart = () => {
                                     <button
                                       className="inc qtybutton"
                                       onClick={() =>
-                                        dispatch(addToCart({
-                                          ...cartItem,
-                                          quantity: quantityCount
-                                        }))
+                                        dispatch(
+                                          addToCart({
+                                            ...cartItem,
+                                            quantity: quantityCount,
+                                          })
+                                        )
                                       }
                                       disabled={
                                         cartItem !== undefined &&
@@ -178,18 +184,22 @@ const Cart = () => {
                                 </td>
                                 <td className="product-subtotal">
                                   {discountedPrice !== null
-                                    ? 
-                                    new Intl.NumberFormat(i18n.language, {style: "currency", currency: currency.currencyName}).format(finalDiscountedPrice * cartItem.quantity)
-
-                                    : 
-                                    new Intl.NumberFormat(i18n.language, {style: "currency", currency: currency.currencyName}).format(finalProductPrice * cartItem.quantity)
-                                  }
+                                    ? currency.currencySymbol +
+                                      (
+                                        finalDiscountedPrice * cartItem.quantity
+                                      ).toFixed(2)
+                                    : currency.currencySymbol +
+                                      (
+                                        finalProductPrice * cartItem.quantity
+                                      ).toFixed(2)}
                                 </td>
 
                                 <td className="product-remove">
                                   <button
                                     onClick={() =>
-                                      dispatch(deleteFromCart(cartItem.cartItemId))
+                                      dispatch(
+                                        deleteFromCart(cartItem.cartItemId)
+                                      )
                                     }
                                   >
                                     <i className="fa fa-times"></i>
@@ -199,7 +209,121 @@ const Cart = () => {
                             );
                           })}
                         </tbody>
-                      </table>
+                      </table> */}
+
+                      <div className="overflow-x-auto">
+                        {/* Tabla solo visible en pantallas mayores (md y superiores) */}
+                        <table className="min-w-full table-auto hidden md:table">
+                          <thead>
+                            <tr>
+                              <th className="text-left p-4">Producto</th>
+                              <th className="text-center p-4">Precio</th>
+                              <th className="text-center p-4">Cantidad</th>
+                              <th className="text-center p-4">Subtotal</th>
+                              <th className="text-center p-4">Acción</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {cartItems.map((item, key) => (
+                              <tr key={key} className="border-t">
+                                <td className="p-4">
+                                  <span>
+                                    <img
+                                      src={`${process.env.PUBLIC_URL}${item.image[0]}`}
+                                      className="w-16 h-auto inline-block mr-4"
+                                    />
+                                    {item.name}
+                                  </span>
+                                  {item.selectedProductColor &&
+                                    item.selectedProductSize && (
+                                      <div className="text-sm">
+                                        Color: {item.selectedProductColor} |
+                                        Talla: {item.selectedProductSize}
+                                      </div>
+                                    )}
+                                </td>
+                                <td className="text-center p-4">
+                                  {currency.currencySymbol}
+                                  {(item.price * currency.currencyRate).toFixed(
+                                    2
+                                  )}
+                                </td>
+                                <td className="text-center p-4">
+                                  {item.quantity}
+                                </td>
+                                <td className="text-center p-4">
+                                  {currency.currencySymbol}
+                                  {(
+                                    item.price *
+                                    item.quantity *
+                                    currency.currencyRate
+                                  ).toFixed(2)}
+                                </td>
+                                <td className="text-center p-4">
+                                  <button
+                                    onClick={() =>
+                                      dispatch(deleteFromCart(item.cartItemId))
+                                    }
+                                  >
+                                    <i className="fa fa-times text-red-500"></i>
+                                  </button>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+
+                        {/* Vista para móviles */}
+                        <div className="md:hidden">
+                          {cartItems.map((item, key) => (
+                            <div
+                              key={key}
+                              className="border-t py-4 px-2 flex gap-4"
+                            >
+                              <img
+                                src={`${process.env.PUBLIC_URL}${item.image[0]}`}
+                                className="w-20 h-auto object-cover"
+                              />
+                              <div className="flex-1">
+                                <Link
+                                  to={`${process.env.PUBLIC_URL}/product/${item.id}`}
+                                  className="font-semibold"
+                                >
+                                  {item.name}
+                                </Link>
+                                {item.selectedProductColor &&
+                                  item.selectedProductSize && (
+                                    <div className="text-sm mt-1">
+                                      <span>
+                                        Color: {item.selectedProductColor}
+                                      </span>
+                                      <br />
+                                      <span>
+                                        Talla: {item.selectedProductSize}
+                                      </span>
+                                    </div>
+                                  )}
+                                <div className="flex justify-between items-center mt-2">
+                                  <span>
+                                    {currency.currencySymbol}
+                                    {(
+                                      item.price * currency.currencyRate
+                                    ).toFixed(2)}{" "}
+                                    x {item.quantity}
+                                  </span>
+                                  <button
+                                    onClick={() =>
+                                      dispatch(deleteFromCart(item.cartItemId))
+                                    }
+                                  >
+                                    <i className="fa fa-times text-red-500"></i>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -210,12 +334,12 @@ const Cart = () => {
                         <Link
                           to={process.env.PUBLIC_URL + "/shop-grid-standard"}
                         >
-                          {t("page_cart.continue_shopping")}
+                          Continue Shopping
                         </Link>
                       </div>
                       <div className="cart-clear">
                         <button onClick={() => dispatch(deleteAllFromCart())}>
-                        {t("page_cart.clear_shopping_cart")}
+                          Clear Shopping Cart
                         </button>
                       </div>
                     </div>
@@ -224,10 +348,10 @@ const Cart = () => {
 
                 <div className="row">
                   <div className="col-lg-4 col-md-6">
-                    <div className="cart-tax" hidden>
+                    <div className="cart-tax">
                       <div className="title-wrap">
                         <h4 className="cart-bottom-title section-bg-gray">
-                          Estimación de gastos de envío e impuestos
+                          Estimate Shipping And Tax
                         </h4>
                       </div>
                       <div className="tax-wrapper">
@@ -267,14 +391,14 @@ const Cart = () => {
                     </div>
                   </div>
 
-                  <div className="col-lg-4 col-md-6" >
-                    <div className="discount-code-wrapper" hidden>
-                      <div className="title-wrap" hidden>
+                  <div className="col-lg-4 col-md-6">
+                    <div className="discount-code-wrapper">
+                      <div className="title-wrap">
                         <h4 className="cart-bottom-title section-bg-gray">
                           Use Coupon Code
                         </h4>
                       </div>
-                      <div className="discount-code" hidden>
+                      <div className="discount-code">
                         <p>Enter your coupon code if you have one.</p>
                         <form>
                           <input type="text" required name="name" />
@@ -290,26 +414,24 @@ const Cart = () => {
                     <div className="grand-totall">
                       <div className="title-wrap">
                         <h4 className="cart-bottom-title section-bg-gary-cart">
-                        Total
+                          Cart Total
                         </h4>
                       </div>
                       <h5>
-                        Total de la Compra{" "}
+                        Total products{" "}
                         <span>
-                          {/* {currency.currencySymbol + cartTotalPrice.toFixed(2)} */}
-                          {new Intl.NumberFormat(i18n.language, {style: "currency", currency: currency.currencyName}).format(cartTotalPrice)}
+                          {currency.currencySymbol + cartTotalPrice.toFixed(2)}
                         </span>
                       </h5>
 
                       <h4 className="grand-totall-title">
-                        Gran Total{" "}
+                        Grand Total{" "}
                         <span>
-                          {console.log(currency)}
-                          {new Intl.NumberFormat(i18n.language, {style: "currency", currency: currency.currencyName}).format(cartTotalPrice)}
+                          {currency.currencySymbol + cartTotalPrice.toFixed(2)}
                         </span>
                       </h4>
                       <Link to={process.env.PUBLIC_URL + "/checkout"}>
-                        Pasar a Caja
+                        Proceed to Checkout
                       </Link>
                     </div>
                   </div>

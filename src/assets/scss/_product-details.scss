@@ -37,7 +37,7 @@
 
       color: #fff;
       border-radius: 3px;
-      background-color: #e6deac;
+      background-color: #fa6bff;
     }
     .img-popup-wrap {
       font-size: 30px;
@@ -437,7 +437,7 @@
 
       color: #fff;
       border-radius: 3px;
-      background-color: #e6deac;
+      background-color: #fa6bff;
     }
     .product-video {
       position: absolute;
@@ -453,7 +453,7 @@
 
         color: #fff;
         border-radius: 3px;
-        background-color: #e6deac;
+        background-color: #fa6bff;
         @media #{$xs-layout} {
           padding: 3px 10px 3px;
         }
@@ -485,7 +485,7 @@
 
     color: #fff;
     border-radius: 3px;
-    background-color: #e6deac;
+    background-color: #fa6bff;
   }
 }
 .sidebar-active {
@@ -589,10 +589,10 @@
       color: #fff;
       border-radius: 3px;
       &.pink {
-        background-color: #e6deac;
+        background-color: #fa6bff;
       }
       &.purple {
-        background-color: #b8db15;
+        background-color: #a749ff;
       }
     }
   }
